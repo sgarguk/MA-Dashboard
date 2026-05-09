@@ -563,13 +563,6 @@ function buildSummaryTable(){
       buildSummaryTable();
     });
   });
-  document.querySelectorAll('#summary-tbl th[data-col]').forEach(th=>{
-    th.addEventListener('click',()=>{
-      sortDir=(sortCol===th.dataset.col)?-sortDir:-1;
-      sortCol=th.dataset.col;
-      buildSummaryTable();
-    });
-  });
 }
 
 // ══════════════════════════════════════════════════════════════════════════
@@ -883,7 +876,9 @@ document.querySelectorAll('.ma-btn').forEach(b=>{
     optLma=+b.dataset.ma;
     document.querySelectorAll('.ma-btn').forEach(x=>{
       x.classList.remove('active-off','active-on');
-      x.classList.add(+x.dataset.ma===optLma?(optLma===0?'active-off':'active-on'):'');
+      if(+x.dataset.ma===optLma){
+        x.classList.add(optLma===0?'active-off':'active-on');
+      }
     });
     updateOpt();
   });
@@ -898,6 +893,14 @@ initSignals();
 initPills();
 updateDashboard();
 buildSummaryTable();
+// Sort listeners attached ONCE here (not inside buildSummaryTable to avoid stacking)
+document.querySelectorAll('#summary-tbl th[data-col]').forEach(function(th){
+  th.addEventListener('click',function(){
+    sortDir=(sortCol===th.dataset.col)?-sortDir:-1;
+    sortCol=th.dataset.col;
+    buildSummaryTable();
+  });
+});
 
 </script>
 </body>
