@@ -158,6 +158,22 @@ def run():
     # Read HTML template and inject data
     template=open(os.path.join(os.path.dirname(__file__),'template.html')).read()
     html=template.replace('__DASH_DATA__',dash_json).replace('__OPT_DATA__',opt_json)
+
+    # Inline Chart.js if still using CDN placeholder (avoids corporate firewall blocks)
+    cdn_tags=['<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>',
+              '<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>']
+    for tag in cdn_tags:
+        if tag in html:
+            try:
+                import urllib.request
+                chartjs_url='https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js'
+                with urllib.request.urlopen(chartjs_url,timeout=30) as resp:
+                    chartjs=resp.read().decode('utf-8')
+                html=html.replace(tag,f'<script>{chartjs}</script>')
+                print(f'  Inlined Chart.js ({len(chartjs)//1024}KB)')
+            except Exception as e:
+                print(f'  Warning: could not inline Chart.js: {e}')
+            break
     out=os.path.join(os.path.dirname(__file__),'index.html')
     open(out,'w').write(html)
     print(f"  Generated: {out} ({len(html)//1024}KB)")
