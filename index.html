@@ -372,25 +372,25 @@ function heatTx(v){return(v!=null&&Math.abs(v)>=10)?'#f8fafc':'#cbd5e1';}
 function initSignals(){
   const d=DASH_DATA;
   document.getElementById('last-upd-date').textContent=d.last_updated;
-  const sigNames={2:'BULL ▲',1:'DEFENSIVE ◆',0:'BEAR ▼',-1:'N/A'};
-  const sigCols={2:'#4ade80',1:'#fbbf24',0:'#f87171',-1:'#94a3b8'};
+  function getSigName(s){return s===2?'BULL':s===1?'DEFENSIVE':s===0?'BEAR':'N/A';}
+  function getSigCol(s){return s===2?'#4ade80':s===1?'#fbbf24':s===0?'#f87171':'#94a3b8';}
   for(const t of ['QQQ','SPY']){
     const s=d.signals[t];
-    const col=sigCols[s.signal]||'#94a3b8';
-    const nm=sigNames[s.signal]||'--';
+    const col=getSigCol(s.signal)||'#94a3b8';
+    const nm=getSigName(s.signal)||'--';
     document.getElementById(t.toLowerCase()+'-sig-val').textContent=nm;
     document.getElementById(t.toLowerCase()+'-sig-val').style.color=col;
     document.getElementById(t.toLowerCase()+'-sig-detail').textContent=
-      s.signal===2?'Full leverage active':s.signal===1?'Defensive — 75%/25% BIL':'Bear — 50%/50% BIL';
+      s.signal===2?'Full leverage active':s.signal===1?'Defensive - 75%/25% BIL':'Bear - 50%/50% BIL';
     document.getElementById(t.toLowerCase()+'-ma-detail').innerHTML=
-      `<span style="color:#94a3b8">Price ${s.price}</span> &nbsp; MA25 ${s.ma25} &nbsp; MA50 ${s.ma50}`;
+      '<span style="color:#94a3b8">Price '+s.price+'</span> &nbsp; MA25 '+s.ma25+' &nbsp; MA50 '+s.ma50;
     document.getElementById(t.toLowerCase()+'-sig-hdr').innerHTML=
-      `<b>${t}:</b> <span style="color:${col};font-weight:700">${nm}</span>`;
+      '<b>'+t+':</b> <span style="color:'+col+';font-weight:700">'+nm+'</span>';
   }
   document.getElementById('qqq-ma-detail').innerHTML=
-    `Price <b>${d.signals.QQQ.price}</b> &nbsp; MA25 ${d.signals.QQQ.ma25} &nbsp; MA50 ${d.signals.QQQ.ma50} &nbsp; MA150 ${d.signals.QQQ.ma150}`;
+    'Price <b>'+d.signals.QQQ.price+'</b> &nbsp; MA25 '+d.signals.QQQ.ma25+' &nbsp; MA50 '+d.signals.QQQ.ma50+' &nbsp; MA150 '+d.signals.QQQ.ma150;
   document.getElementById('spy-ma-detail').innerHTML=
-    `Price <b>${d.signals.SPY.price}</b> &nbsp; MA25 ${d.signals.SPY.ma25} &nbsp; MA50 ${d.signals.SPY.ma50} &nbsp; MA150 ${d.signals.SPY.ma150}`;
+    'Price <b>'+d.signals.SPY.price+'</b> &nbsp; MA25 '+d.signals.SPY.ma25+' &nbsp; MA50 '+d.signals.SPY.ma50+' &nbsp; MA150 '+d.signals.SPY.ma150;
 }
 
 // ── STRATEGY PILLS ────────────────────────────────────────────────────────
