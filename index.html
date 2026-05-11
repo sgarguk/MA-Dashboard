@@ -29,7 +29,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#F7F7F7;--bg2:#FFFFFF;--bg3:#F0F0F0;--border:#E2E8F0;--border2:#CBD5E1;
   --text:#1A1A1A;--muted:#64748B;--faint:#94A3B8;--fainter:#CBD5E1;
-  --bull:#16A34A;--def:#D97706;--bear:#DC2626;--deep:#FCA5A5;
+  --bull:#16A34A;--def:#D97706;--bear:#DC2626;--deep:#C0392B;
   --qqq:#4F46E5;--spy:#0284C7;--accent:#E31837}
 body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 /* ── header */
@@ -248,7 +248,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
     </div>
 
     <div style="font-size:14px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin:0 0 8px;border-top:1px solid var(--border);padding-top:10px">BULL REGIME WEIGHTS</div>
-    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#f87171" id="lbl-3x">3x &mdash; TQQQ</span><span class="sl-pct" style="color:#f87171" id="pct-3x">20%</span></div>
+    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#DC2626" id="lbl-3x">3x &mdash; TQQQ</span><span class="sl-pct" style="color:#DC2626" id="pct-3x">20%</span></div>
       <input type="range" id="s3" min="0" max="100" value="20"><div class="fb-row">
       <button class="fbtn" data-s="s3" data-d="-10">-10</button><button class="fbtn" data-s="s3" data-d="-5">-5</button><button class="fbtn" data-s="s3" data-d="+5">+5</button><button class="fbtn" data-s="s3" data-d="+10">+10</button></div></div>
     <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#fbbf24" id="lbl-2x">2x &mdash; QLD</span><span class="sl-pct" style="color:#fbbf24" id="pct-2x">30%</span></div>
@@ -282,7 +282,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
     </div>
     <div class="sl-row" id="db-row" style="opacity:.4;pointer-events:none">
       <div class="sl-head"><span class="sl-lbl" style="color:var(--deep)">Deep Bear Equity %</span><span class="sl-pct" style="color:var(--deep)" id="pct-db">0%</span></div>
-      <input type="range" id="s-db" min="0" max="50" value="0" style="background:linear-gradient(to right,#fca5a5 0%,#334155 0%)">
+      <input type="range" id="s-db" min="0" max="50" value="0" style="background:linear-gradient(to right,#C0392B 0%,#E2E8F0 0%)">
       <div style="display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-top:2px"><span>0% (full cash)</span><span>50%</span></div>
     </div>
 
@@ -477,7 +477,7 @@ function renderDashChart(){
         const v=ann[y]||0,b=annb[y]||0,al=(v-b);
         const is22=(y==='2022');
         return `<tr style="${is22?'background:#1c1010;':''}${i%2===0&&!is22?'background:var(--bg)':''}">
-          <td style="font-weight:700;color:${is22?'#fca5a5':'#e2e8f0'}">${y}${is22?' 🐻':''}</td>
+          <td style="font-weight:700;color:${is22?'#DC2626':'#475569'}">${y}${is22?' 🐻':''}</td>
           <td style="text-align:right;font-weight:700;color:${v>=0?col:'#ef4444'}">${pct(v)}</td>
           <td style="text-align:right;color:${b>=0?'#64748b':'#7c3aed'}">${pct(b)}</td>
           <td style="text-align:right;font-weight:700;color:${al>=0?'#38bdf8':'#fb923c'}">${pct(al)}pp</td>
@@ -502,7 +502,7 @@ function renderDashChart(){
       '</tr></thead><tbody>'+
       rows.map(r=>{
         const is22=(r.y===2022);
-        return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#fca5a5':'#cbd5e1'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+
+        return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#DC2626':'#475569'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+
           [r.Q1,r.Q2,r.Q3,r.Q4,r.full].map(v=>`<td style="padding:2px"><div class="heatcell" style="background:${heatBg(v)};color:${heatTx(v)}">${v!=null?pct(v):'—'}</div></td>`).join('')+'</tr>';
       }).join('')+'</tbody></table></div>';
     if(dashChart){dashChart.destroy();dashChart=null;}
@@ -544,7 +544,7 @@ function buildSummaryTable(){
       <td style="text-align:right;color:#4ade80">+${r.cagr.toFixed(1)}%</td>
       <td style="text-align:right;color:var(--muted)">${r.vol.toFixed(1)}%</td>
       <td style="text-align:right;font-weight:600;color:${r.sharpe>=0.8?'#4ade80':r.sharpe>=0.6?'#fbbf24':'#f87171'}">${r.sharpe.toFixed(2)}</td>
-      <td style="text-align:right;color:#f87171">${r.dd.toFixed(1)}%</td>
+      <td style="text-align:right;color:#DC2626">${r.dd.toFixed(1)}%</td>
       <td style="text-align:right;font-weight:600;color:${(r.y2022||0)>=0?'#4ade80':'#f87171'}">${r.y2022!=null?pct(r.y2022):'—'}</td>
       <td style="text-align:right;color:${(r.y2023||0)>=0?'#4ade80':'#f87171'}">${r.y2023!=null?pct(r.y2023):'—'}</td>
       <td style="text-align:right;color:${(r.y2024||0)>=0?'#4ade80':'#f87171'}">${r.y2024!=null?pct(r.y2024):'—'}</td>
@@ -662,10 +662,10 @@ function updDBCtrl(){
   document.getElementById('db-rr').style.opacity=active?'1':'0.35';
   document.getElementById('ra-db').textContent=active?(dbe*100).toFixed(0)+'% '+f.t1+'+'+ ((1-dbe)*100).toFixed(0)+'% BIL':'filter off';
   const badge=document.getElementById('db-badge');
-  badge.textContent=active?'MA'+optLma+' ON':'OFF'; badge.style.background=active?'#7f1d1d':'#1e293b'; badge.style.color=active?'#fca5a5':'#475569';
+  badge.textContent=active?'MA'+optLma+' ON':'OFF'; badge.style.background=active?'#7f0000':'#E2E8F0'; badge.style.color=active?'#FFFFFF':'#475569';
   document.getElementById('pct-db').textContent=document.getElementById('s-db').value+'%';
   const sdb=document.getElementById('s-db');
-  sdb.style.background='linear-gradient(to right,#fca5a5 '+sdb.value*2+'%,#334155 '+sdb.value*2+'%)';
+  sdb.style.background='linear-gradient(to right,#C0392B '+sdb.value*2+'%,#E2E8F0 '+sdb.value*2+'%)';
 }
 
 function updOptKPIs(st,bh,col){
@@ -686,14 +686,14 @@ function updBearTable(wts,dbe){
     const d=computePort(wts.w3,wts.w2,wts.w1,optFamily,m,dbe),st=oStats(d),a22=oAnnRet(d,2022),dd22=oMaxDD22(d),db22=dbDays22(optFamily,m);
     const isAct=(m===optLma);
     return '<tr style="'+(isAct?'background:'+f.blend+'12;outline:1px solid '+f.blend+'30':'')+'">'+
-      '<td style="font-weight:'+(isAct?800:400)+';color:'+(isAct?f.blend:'#e2e8f0')+'">'+(isAct?'● ':'')+( m?'MA'+m:'OFF')+( isAct?' <span style="font-size:14px;padding:1px 5px;border-radius:4px;background:'+f.blend+'20;color:'+f.blend+';font-weight:700">ACTIVE</span>':'')+'</td>'+
-      '<td style="text-align:right;color:'+(m?'#fca5a5':'#475569')+'">'+(m?db22+'d':'—')+'</td>'+
+      '<td style="font-weight:'+(isAct?800:400)+';color:'+(isAct?f.blend:'#475569')+'">'+(isAct?'● ':'')+( m?'MA'+m:'OFF')+( isAct?' <span style="font-size:14px;padding:1px 5px;border-radius:4px;background:'+f.blend+'20;color:'+f.blend+';font-weight:700">ACTIVE</span>':'')+'</td>'+
+      '<td style="text-align:right;color:'+(m?'#DC2626':'#475569')+'">'+(m?db22+'d':'—')+'</td>'+
       '<td style="text-align:right;font-weight:700;color:'+((a22||0)>=0?'#4ade80':'#f87171')+'">'+(a22!=null?pct(a22):'—')+'</td>'+
-      '<td style="text-align:right;color:#f87171">'+(dd22!=null?dd22.toFixed(1)+'%':'—')+'</td>'+
+      '<td style="text-align:right;color:#DC2626">'+(dd22!=null?dd22.toFixed(1)+'%':'—')+'</td>'+
       '<td style="text-align:right;color:#4ade80">+'+st.tr.toFixed(1)+'%</td>'+
       '<td style="text-align:right;color:#4ade80">+'+st.cagr.toFixed(1)+'%</td>'+
       '<td style="text-align:right;color:'+(st.sharpe>=0.8?'#4ade80':st.sharpe>=0.6?'#fbbf24':'#f87171')+'">'+st.sharpe.toFixed(2)+'</td>'+
-      '<td style="text-align:right;color:#f87171">'+st.dd.toFixed(1)+'%</td></tr>';
+      '<td style="text-align:right;color:#DC2626">'+st.dd.toFixed(1)+'%</td></tr>';
   }).join('');
 }
 
@@ -719,7 +719,7 @@ function updCmpTable(bst,wts,dbe){
       '<td style="text-align:right;color:#4ade80">+'+r.st.cagr.toFixed(1)+'%</td>'+
       '<td style="text-align:right;color:var(--muted)">'+r.st.vol.toFixed(1)+'%</td>'+
       '<td style="text-align:right;font-weight:600;color:'+(r.st.sharpe>=0.8?'#4ade80':r.st.sharpe>=0.6?'#fbbf24':'#f87171')+'">'+r.st.sharpe.toFixed(2)+'</td>'+
-      '<td style="text-align:right;color:#f87171">'+r.st.dd.toFixed(1)+'%</td>'+
+      '<td style="text-align:right;color:#DC2626">'+r.st.dd.toFixed(1)+'%</td>'+
       '<td style="text-align:right;font-weight:600;color:'+a22c+'">'+(r.a22!=null?pct(r.a22):'—')+'</td></tr>';
   }).join('');
   document.querySelectorAll('.opt-cmp-row').forEach((row,i)=>{
@@ -757,7 +757,7 @@ function renderOptChart(daily){
       `<th style="text-align:left">Year</th><th style="text-align:right;color:${f.blend}">${blendLbl}</th>` +
       `<th style="text-align:right;color:var(--faint)">${f.bch} B&H</th><th style="text-align:right;color:#38bdf8">Alpha</th></tr></thead><tbody>`+
       years.map((y,i)=>{const v=ann[y]||0,b=annBH[y]||0,al=v-b,is22=y==='2022';
-        return `<tr style="${is22?'background:#1c1010':i%2===0?'background:var(--bg)':''}"><td style="font-weight:700;color:${is22?'#fca5a5':'#e2e8f0'}">${y}${is22?' 🐻':''}</td><td style="text-align:right;font-weight:700;color:${v>=0?f.blend:'#ef4444'}">${pct(v)}</td><td style="text-align:right;color:${b>=0?'#64748b':'#7c3aed'}">${pct(b)}</td><td style="text-align:right;font-weight:700;color:${al>=0?'#38bdf8':'#fb923c'}">${pct(al)}pp</td></tr>`;
+        return `<tr style="${is22?'background:#1c1010':i%2===0?'background:var(--bg)':''}"><td style="font-weight:700;color:${is22?'#DC2626':'#475569'}">${y}${is22?' 🐻':''}</td><td style="text-align:right;font-weight:700;color:${v>=0?f.blend:'#ef4444'}">${pct(v)}</td><td style="text-align:right;color:${b>=0?'#64748b':'#7c3aed'}">${pct(b)}</td><td style="text-align:right;font-weight:700;color:${al>=0?'#38bdf8':'#fb923c'}">${pct(al)}pp</td></tr>`;
       }).join('')+'</tbody></table></div>';
     const ctx=document.getElementById('opt-chart').getContext('2d');
     optChart=new Chart(ctx,{type:'bar',data:{labels:years,datasets:[
@@ -773,7 +773,7 @@ function renderOptChart(daily){
     const rows=YEARS.map(y=>({y,Q1:q[y+'Q1'],Q2:q[y+'Q2'],Q3:q[y+'Q3'],Q4:q[y+'Q4'],full:a[String(y)]})).filter(r=>r.Q1!=null||r.Q2!=null||r.Q3!=null||r.Q4!=null);
     body.innerHTML='<div style="overflow-x:auto"><table style="border-spacing:3px;border-collapse:separate;min-width:440px"><thead><tr>'+
       '<th style="text-align:left;padding:5px 9px">YEAR</th>'+['Q1','Q2','Q3','Q4','FULL'].map(h=>`<th style="text-align:center;min-width:74px;padding:5px 2px">${h}</th>`).join('')+'</tr></thead><tbody>'+
-      rows.map(r=>{const is22=r.y===2022;return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#fca5a5':'#cbd5e1'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+[r.Q1,r.Q2,r.Q3,r.Q4,r.full].map(v=>`<td style="padding:2px"><div class="heatcell" style="background:${heatBg(v)};color:${heatTx(v)}">${v!=null?pct(v):'—'}</div></td>`).join('')+'</tr>';}).join('')+
+      rows.map(r=>{const is22=r.y===2022;return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#DC2626':'#475569'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+[r.Q1,r.Q2,r.Q3,r.Q4,r.full].map(v=>`<td style="padding:2px"><div class="heatcell" style="background:${heatBg(v)};color:${heatTx(v)}">${v!=null?pct(v):'—'}</div></td>`).join('')+'</tr>';}).join('')+
       '</tbody></table></div>';
 
   } else {
