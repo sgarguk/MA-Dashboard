@@ -174,7 +174,10 @@ def run():
             except Exception as e:
                 print(f'  Warning: could not inline Chart.js: {e}')
             break
-    out=os.path.join(os.path.dirname(__file__),'index.html')
+    # Ensure public/ directory exists
+    public_dir=os.path.join(os.path.dirname(os.path.abspath(__file__)),'public')
+    os.makedirs(public_dir,exist_ok=True)
+    out=os.path.join(public_dir,'index.html')
     open(out,'w').write(html)
     print(f"  Generated: {out} ({len(html)//1024}KB)")
     print(f"[OK] Build complete — data through {last_date}")
