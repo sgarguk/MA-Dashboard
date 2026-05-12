@@ -174,11 +174,15 @@ def run():
             except Exception as e:
                 print(f'  Warning: could not inline Chart.js: {e}')
             break
-    # Ensure public/ directory exists
+    # Write to root index.html (for GitHub Actions git add index.html)
+    out=os.path.join(os.path.dirname(__file__),'index.html')
+    open(out,'w').write(html)
+    # Also write to public/ for Cloudflare Pages (output directory = public)
     public_dir=os.path.join(os.path.dirname(os.path.abspath(__file__)),'public')
     os.makedirs(public_dir,exist_ok=True)
-    out=os.path.join(public_dir,'index.html')
-    open(out,'w').write(html)
+    pub_out=os.path.join(public_dir,'index.html')
+    open(pub_out,'w').write(html)
+    print(f"  Also written: {pub_out}")
     print(f"  Generated: {out} ({len(html)//1024}KB)")
     print(f"[OK] Build complete — data through {last_date}")
 
