@@ -101,13 +101,13 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
 .lev-fill{height:100%;border-radius:3px;transition:width .25s,background .25s}
 /* ── MA filter buttons */
 .ma-btns{display:flex;gap:4px;margin-bottom:8px}
-.ma-btn{flex:1;padding:7px 3px;border-radius:6px;border:1px solid var(--border2);background:var(--bg3);color:var(--faint);font-size:10px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s}
+.ma-btn{flex:1;padding:7px 3px;border-radius:6px;border:1px solid var(--border2);background:var(--bg3);color:var(--muted);font-size:10px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s}
 .ma-btn.active-off{border-color:var(--border2);background:var(--bg2);color:var(--muted)}
 .ma-btn.active-on{border-color:#DC2626;background:#FEE2E2;color:#991B1B;font-weight:800}
 /* ── presets */
 .preset-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:4px}
-.pb{background:var(--bg3);border:1px solid var(--border2);color:var(--faint);font-size:10px;font-weight:700;padding:6px 3px;border-radius:6px;cursor:pointer;text-align:center;line-height:1.4;transition:all .15s}
-.pb.active{border-color:var(--accent);background:#1e1b4b;color:var(--qqq)}
+.pb{background:var(--bg3);border:1px solid var(--border2);color:var(--muted);font-size:10px;font-weight:700;padding:6px 3px;border-radius:6px;cursor:pointer;text-align:center;line-height:1.4;transition:all .15s}
+.pb.active{border-color:var(--accent);background:#EEF2FF;color:var(--qqq)}
 .pb:hover:not(.active){border-color:var(--accent)80;color:var(--muted)}
 /* ── regime rows */
 .r-row{display:flex;align-items:center;gap:7px;padding:6px 9px;border-radius:6px;margin-bottom:4px;font-size:11px}
@@ -242,7 +242,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
     <div style="font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.1em;margin-bottom:10px">FAMILY</div>
     <div style="display:flex;gap:5px;margin-bottom:14px">
       <button class="fam-btn" data-fam="QQQ" style="flex:1;padding:8px;border-radius:7px;border:1px solid var(--border2);cursor:pointer;font-size:11px;font-weight:700;background:var(--accent);color:white;box-shadow:0 0 12px #4f46e540">QQQ (Nasdaq-100)</button>
-      <button class="fam-btn" data-fam="SPY" style="flex:1;padding:8px;border-radius:7px;border:1px solid var(--border2);cursor:pointer;font-size:11px;font-weight:700;background:var(--bg3);color:var(--faint)">SPY (S&amp;P 500)</button>
+      <button class="fam-btn" data-fam="SPY" style="flex:1;padding:8px;border-radius:7px;border:1px solid var(--border2);cursor:pointer;font-size:11px;font-weight:700;background:var(--bg3);color:var(--muted)">SPY (S&amp;P 500)</button>
     </div>
 
     <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin:0 0 8px;border-top:1px solid var(--border);padding-top:10px">BULL REGIME WEIGHTS</div>
@@ -861,7 +861,7 @@ document.querySelectorAll('.fam-btn').forEach(b=>{
     document.querySelectorAll('.fam-btn').forEach(x=>{
       const isActive=(x.dataset.fam===optFamily);
       x.style.background=isActive?'var(--accent)':'var(--bg3)';
-      x.style.color=isActive?'white':'var(--faint)';
+      x.style.color=isActive?'white':'var(--muted)';
       x.style.boxShadow=isActive?'0 0 12px #4f46e540':'none';
       x.style.borderColor=isActive?'var(--accent)':'var(--border2)';
     });
