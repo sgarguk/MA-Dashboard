@@ -27,14 +27,14 @@
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#0f172a;--bg2:#111827;--bg3:#1e293b;--border:#1e293b;--border2:#334155;
-  --text:#f1f5f9;--muted:#94a3b8;--faint:#475569;--fainter:#334155;
-  --bull:#4ade80;--def:#fbbf24;--bear:#f87171;--deep:#fca5a5;
-  --qqq:#818cf8;--spy:#38bdf8;--accent:#6366f1}
+:root{--bg:#F7F7F7;--bg2:#FFFFFF;--bg3:#F0F0F0;--border:#E2E8F0;--border2:#CBD5E1;
+  --text:#1A1A1A;--muted:#64748B;--faint:#94A3B8;--fainter:#CBD5E1;
+  --bull:#16A34A;--def:#D97706;--bear:#DC2626;--deep:#C0392B;
+  --qqq:#4F46E5;--spy:#0284C7;--accent:#E31837}
 body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 /* ── header */
-#hdr{background:linear-gradient(135deg,#1e293b,#0f172a);border-bottom:1px solid #1e3a5f;padding:12px 24px;display:flex;justify-content:space-between;align-items:center}
-#lc-badge{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#4f46e5,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex-shrink:0}
+#hdr{background:#1A0505;border-bottom:3px solid #E31837;padding:12px 24px;display:flex;justify-content:space-between;align-items:center}
+#lc-logo{height:40px;flex-shrink:0}
 /* ── main nav tabs */
 #main-tabs{background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:4px}
 .main-tab{padding:12px 20px;border:none;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:transparent;color:var(--faint);border-bottom:3px solid transparent;transition:all .15s}
@@ -74,9 +74,9 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);co
 .tbl-panel{background:var(--bg3);border-radius:11px;border:1px solid var(--border2);overflow:hidden;margin-bottom:12px}
 .tbl-head{padding:10px 16px 0;border-bottom:1px solid var(--border)}
 table{width:100%;border-collapse:collapse;font-size:11px}
-th{padding:8px 12px;color:var(--faint);font-weight:600;font-size:10px;letter-spacing:.06em;border-bottom:1px solid var(--border);background:#0f172a;white-space:nowrap;cursor:pointer}
+th{padding:8px 12px;color:var(--faint);font-weight:600;font-size:10px;letter-spacing:.06em;border-bottom:1px solid var(--border);background:#E5E7EB;white-space:nowrap;cursor:pointer}
 th:hover{color:var(--muted)}
-td{padding:7px 12px;border-bottom:1px solid #1e293b22;white-space:nowrap}
+td{padding:7px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
 tr:hover td{background:#1e3a5f22}
 tr.highlight td{background:var(--accent)15;outline:1px solid var(--accent)30}
 /* ── optimizer layout */
@@ -129,16 +129,14 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
 
 <!-- HEADER -->
 <div id="hdr">
-  <div style="display:flex;gap:10px;align-items:center">
-    <div id="lc-badge">LC</div>
-    <div>
-      <div style="font-weight:700;font-size:14px;letter-spacing:.04em">LIGHTHOUSE CANTON</div>
-      <div style="font-size:10px;color:var(--faint);letter-spacing:.07em">SYSTEMATIC TACTICAL MA — DASHBOARD &amp; OPTIMIZER</div>
-    </div>
+  <div style="display:flex;gap:16px;align-items:center">
+    <img src="data:image/png;base64,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" alt="Lighthouse Canton" style="height:48px;width:auto">
+    <div style="width:1px;height:34px;background:rgba(255,255,255,0.25);flex-shrink:0"></div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.6);letter-spacing:2px;text-transform:uppercase;line-height:1.4">Systematic Tactical MA<br>Dashboard &amp; Optimizer</div>
   </div>
   <div style="display:flex;align-items:center;gap:12px">
     <div class="last-upd"><div class="live-dot"></div><span>Data: <b id="last-upd-date">--</b></span></div>
-    <div style="text-align:right;font-size:10px;color:var(--faint);line-height:1.8">
+    <div style="text-align:right;font-size:14px;color:var(--muted);line-height:1.8">
       <div>MA(25/50) &middot; T+1 &middot; 3bp TC</div>
       <div>Adj Close Total Return</div>
     </div>
@@ -287,10 +285,10 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
     </div>
 
     <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--faint);margin:10px 0 7px;border-top:1px solid var(--border);padding-top:9px">REGIME ALLOCATION</div>
-    <div class="r-row" style="background:#15803d22"><div class="r-dot" style="background:var(--bull)"></div><span class="r-name" style="color:var(--bull)">BULL</span><span style="color:var(--muted);font-size:10px" id="ra-bull">blend</span></div>
-    <div class="r-row" style="background:#b4530922"><div class="r-dot" style="background:var(--def)"></div><span class="r-name" style="color:var(--def)">DEFENSIVE</span><span style="color:var(--muted);font-size:10px" id="ra-def">75% base+25% BIL</span></div>
-    <div class="r-row" style="background:#ef444422"><div class="r-dot" style="background:var(--bear)"></div><span class="r-name" style="color:var(--bear)">BEAR</span><span style="color:var(--muted);font-size:10px">50% base+50% BIL</span></div>
-    <div class="r-row" id="db-rr" style="background:#7f1d1d33;opacity:.35"><div class="r-dot" style="background:#ef4444"></div><span class="r-name" style="color:var(--deep)">DEEP BEAR</span><span style="color:var(--muted);font-size:10px" id="ra-db">filter off</span><span id="db-badge" style="margin-left:auto;font-size:9px;padding:2px 6px;border-radius:10px;background:var(--bg3);color:var(--faint);font-weight:700">OFF</span></div>
+    <div class="r-row" style="background:#DCFCE7"><div class="r-dot" style="background:var(--bull)"></div><span class="r-name" style="color:var(--bull)">BULL</span><span style="color:var(--muted);font-size:10px" id="ra-bull">blend</span></div>
+    <div class="r-row" style="background:#FEF3C7"><div class="r-dot" style="background:var(--def)"></div><span class="r-name" style="color:var(--def)">DEFENSIVE</span><span style="color:var(--muted);font-size:10px" id="ra-def">75% base+25% BIL</span></div>
+    <div class="r-row" style="background:#FEE2E2"><div class="r-dot" style="background:var(--bear)"></div><span class="r-name" style="color:var(--bear)">BEAR</span><span style="color:var(--muted);font-size:10px">50% base+50% BIL</span></div>
+    <div class="r-row" id="db-rr" style="background:#FEF2F2;opacity:.7"><div class="r-dot" style="background:#ef4444"></div><span class="r-name" style="color:var(--deep)">DEEP BEAR</span><span style="color:var(--muted);font-size:10px" id="ra-db">filter off</span><span id="db-badge" style="margin-left:auto;font-size:9px;padding:2px 6px;border-radius:10px;background:var(--bg3);color:var(--faint);font-weight:700">OFF</span></div>
   </div>
 
   <!-- RESULTS -->
@@ -349,8 +347,8 @@ const GC='#1e293b';
 // ── DASHBOARD DATA SETUP ──────────────────────────────────────────────────
 const STRAT_NAMES=Object.keys(DASH_DATA.strategies);
 const STRAT_COLORS={
-  'QQQ 3x':'#f87171','QQQ 2x':'#fbbf24','QQQ Blend':'#818cf8','QQQ 1x':'#4ade80',
-  'SPY 3x':'#fb923c','SPY 2x':'#a78bfa','SPY Blend':'#38bdf8','SPY 1x':'#6ee7b7',
+  'QQQ 3x':'#DC2626','QQQ 2x':'#B45309','QQQ Blend':'#818cf8','QQQ 1x':'#16A34A',
+  'SPY 3x':'#EA580C','SPY 2x':'#a78bfa','SPY Blend':'#0369A1','SPY 1x':'#6ee7b7',
   'QQQ B&H':'#475569','SPY B&H':'#64748b'
 };
 const YEARS=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026];
@@ -372,25 +370,25 @@ function heatTx(v){return(v!=null&&Math.abs(v)>=10)?'#f8fafc':'#cbd5e1';}
 function initSignals(){
   const d=DASH_DATA;
   document.getElementById('last-upd-date').textContent=d.last_updated;
-  const sigNames={2:'BULL ▲',1:'DEFENSIVE ◆',0:'BEAR ▼',-1:'N/A'};
-  const sigCols={2:'#4ade80',1:'#fbbf24',0:'#f87171',-1:'#94a3b8'};
+  function getSigName(s){return s===2?'BULL':s===1?'DEFENSIVE':s===0?'BEAR':'N/A';}
+  function getSigCol(s){return s===2?'#16A34A':s===1?'#B45309':s===0?'#DC2626':'#94a3b8';}
   for(const t of ['QQQ','SPY']){
     const s=d.signals[t];
-    const col=sigCols[s.signal]||'#94a3b8';
-    const nm=sigNames[s.signal]||'--';
+    const col=getSigCol(s.signal)||'#94a3b8';
+    const nm=getSigName(s.signal)||'--';
     document.getElementById(t.toLowerCase()+'-sig-val').textContent=nm;
     document.getElementById(t.toLowerCase()+'-sig-val').style.color=col;
     document.getElementById(t.toLowerCase()+'-sig-detail').textContent=
-      s.signal===2?'Full leverage active':s.signal===1?'Defensive — 75%/25% BIL':'Bear — 50%/50% BIL';
+      s.signal===2?'Full leverage active':s.signal===1?'Defensive - 75%/25% BIL':'Bear - 50%/50% BIL';
     document.getElementById(t.toLowerCase()+'-ma-detail').innerHTML=
-      `<span style="color:#94a3b8">Price ${s.price}</span> &nbsp; MA25 ${s.ma25} &nbsp; MA50 ${s.ma50}`;
+      '<span style="color:var(--muted)">Price '+s.price+'</span> &nbsp; MA25 '+s.ma25+' &nbsp; MA50 '+s.ma50;
     document.getElementById(t.toLowerCase()+'-sig-hdr').innerHTML=
-      `<b>${t}:</b> <span style="color:${col};font-weight:700">${nm}</span>`;
+      '<b>'+t+':</b> <span style="color:'+col+';font-weight:700">'+nm+'</span>';
   }
   document.getElementById('qqq-ma-detail').innerHTML=
-    `Price <b>${d.signals.QQQ.price}</b> &nbsp; MA25 ${d.signals.QQQ.ma25} &nbsp; MA50 ${d.signals.QQQ.ma50} &nbsp; MA150 ${d.signals.QQQ.ma150}`;
+    'Price <b>'+d.signals.QQQ.price+'</b> &nbsp; MA25 '+d.signals.QQQ.ma25+' &nbsp; MA50 '+d.signals.QQQ.ma50+' &nbsp; MA150 '+d.signals.QQQ.ma150;
   document.getElementById('spy-ma-detail').innerHTML=
-    `Price <b>${d.signals.SPY.price}</b> &nbsp; MA25 ${d.signals.SPY.ma25} &nbsp; MA50 ${d.signals.SPY.ma50} &nbsp; MA150 ${d.signals.SPY.ma150}`;
+    'Price <b>'+d.signals.SPY.price+'</b> &nbsp; MA25 '+d.signals.SPY.ma25+' &nbsp; MA50 '+d.signals.SPY.ma50+' &nbsp; MA150 '+d.signals.SPY.ma150;
 }
 
 // ── STRATEGY PILLS ────────────────────────────────────────────────────────
@@ -540,15 +538,15 @@ function buildSummaryTable(){
     const isSel=(r.name===dashStrat);
     return `<tr class="${isSel?'highlight':''}" style="cursor:pointer" data-n="${r.name}">
       <td style="font-weight:${isSel?800:500};color:${col}"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${col};margin-right:6px;vertical-align:middle"></span>${r.name}</td>
-      <td style="text-align:right;font-weight:700;color:#4ade80">+${r.tr.toFixed(1)}%</td>
-      <td style="text-align:right;color:#4ade80">+${r.cagr.toFixed(1)}%</td>
-      <td style="text-align:right;color:#94a3b8">${r.vol.toFixed(1)}%</td>
-      <td style="text-align:right;font-weight:600;color:${r.sharpe>=0.8?'#4ade80':r.sharpe>=0.6?'#fbbf24':'#f87171'}">${r.sharpe.toFixed(2)}</td>
-      <td style="text-align:right;color:#f87171">${r.dd.toFixed(1)}%</td>
-      <td style="text-align:right;font-weight:600;color:${(r.y2022||0)>=0?'#4ade80':'#f87171'}">${r.y2022!=null?pct(r.y2022):'—'}</td>
-      <td style="text-align:right;color:${(r.y2023||0)>=0?'#4ade80':'#f87171'}">${r.y2023!=null?pct(r.y2023):'—'}</td>
-      <td style="text-align:right;color:${(r.y2024||0)>=0?'#4ade80':'#f87171'}">${r.y2024!=null?pct(r.y2024):'—'}</td>
-      <td style="text-align:right;color:#64748b">${r.trades}</td>
+      <td style="text-align:right;font-weight:700;color:#16A34A">+${r.tr.toFixed(1)}%</td>
+      <td style="text-align:right;color:#16A34A">+${r.cagr.toFixed(1)}%</td>
+      <td style="text-align:right;color:var(--muted)">${r.vol.toFixed(1)}%</td>
+      <td style="text-align:right;font-weight:600;color:${r.sharpe>=0.8?'#16A34A':r.sharpe>=0.6?'#B45309':'#DC2626'}">${r.sharpe.toFixed(2)}</td>
+      <td style="text-align:right;color:#DC2626">${r.dd.toFixed(1)}%</td>
+      <td style="text-align:right;font-weight:600;color:${(r.y2022||0)>=0?'#16A34A':'#DC2626'}">${r.y2022!=null?pct(r.y2022):'—'}</td>
+      <td style="text-align:right;color:${(r.y2023||0)>=0?'#16A34A':'#DC2626'}">${r.y2023!=null?pct(r.y2023):'—'}</td>
+      <td style="text-align:right;color:${(r.y2024||0)>=0?'#16A34A':'#DC2626'}">${r.y2024!=null?pct(r.y2024):'—'}</td>
+      <td style="text-align:right;color:var(--faint)">${r.trades}</td>
     </tr>`;
   }).join('');
   document.querySelectorAll('#summary-body tr').forEach(tr=>{
@@ -560,13 +558,6 @@ function buildSummaryTable(){
         p.style.background=active?(STRAT_COLORS[dashStrat]||'#818cf8'):'';
       });
       updateDashboard();
-      buildSummaryTable();
-    });
-  });
-  document.querySelectorAll('#summary-tbl th[data-col]').forEach(th=>{
-    th.addEventListener('click',()=>{
-      sortDir=(sortCol===th.dataset.col)?-sortDir:-1;
-      sortCol=th.dataset.col;
       buildSummaryTable();
     });
   });
