@@ -874,7 +874,7 @@ document.querySelectorAll('.ma-btn').forEach(b=>{
     optLma=+b.dataset.ma;
     document.querySelectorAll('.ma-btn').forEach(x=>{
       x.classList.remove('active-off','active-on');
-      x.classList.add(+x.dataset.ma===optLma?(optLma===0?'active-off':'active-on'):'');
+      if(+x.dataset.ma===optLma) x.classList.add(optLma===0?'active-off':'active-on');
     });
     updateOpt();
   });
