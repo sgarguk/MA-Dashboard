@@ -74,7 +74,7 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);co
 .tbl-panel{background:var(--bg3);border-radius:11px;border:1px solid var(--border2);overflow:hidden;margin-bottom:12px}
 .tbl-head{padding:10px 16px 0;border-bottom:1px solid var(--border)}
 table{width:100%;border-collapse:collapse;font-size:11px}
-th{padding:8px 12px;color:var(--faint);font-weight:600;font-size:10px;letter-spacing:.06em;border-bottom:1px solid var(--border);background:#E5E7EB;white-space:nowrap;cursor:pointer}
+th{padding:8px 12px;color:var(--muted);font-weight:600;font-size:10px;letter-spacing:.06em;border-bottom:1px solid var(--border);background:#E5E7EB;white-space:nowrap;cursor:pointer}
 th:hover{color:var(--muted)}
 td{padding:7px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
 tr:hover td{background:#1e3a5f22}
@@ -475,7 +475,7 @@ function renderDashChart(){
         const v=ann[y]||0,b=annb[y]||0,al=(v-b);
         const is22=(y==='2022');
         return `<tr style="${is22?'background:#1c1010;':''}${i%2===0&&!is22?'background:#0f172a':''}">
-          <td style="font-weight:700;color:${is22?'#fca5a5':'#e2e8f0'}">${y}${is22?' 🐻':''}</td>
+          <td style="font-weight:700;color:${is22?'#DC2626':'var(--text)'}">${y}${is22?' 🐻':''}</td>
           <td style="text-align:right;font-weight:700;color:${v>=0?col:'#ef4444'}">${pct(v)}</td>
           <td style="text-align:right;color:${b>=0?'#64748b':'#7c3aed'}">${pct(b)}</td>
           <td style="text-align:right;font-weight:700;color:${al>=0?'#38bdf8':'#fb923c'}">${pct(al)}pp</td>
@@ -500,7 +500,7 @@ function renderDashChart(){
       '</tr></thead><tbody>'+
       rows.map(r=>{
         const is22=(r.y===2022);
-        return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#fca5a5':'#cbd5e1'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+
+        return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#DC2626':'#cbd5e1'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+
           [r.Q1,r.Q2,r.Q3,r.Q4,r.full].map(v=>`<td style="padding:2px"><div class="heatcell" style="background:${heatBg(v)};color:${heatTx(v)}">${v!=null?pct(v):'—'}</div></td>`).join('')+'</tr>';
       }).join('')+'</tbody></table></div>';
     if(dashChart){dashChart.destroy();dashChart=null;}
@@ -660,7 +660,7 @@ function updDBCtrl(){
   document.getElementById('db-rr').style.opacity=active?'1':'0.35';
   document.getElementById('ra-db').textContent=active?(dbe*100).toFixed(0)+'% '+f.t1+'+'+ ((1-dbe)*100).toFixed(0)+'% BIL':'filter off';
   const badge=document.getElementById('db-badge');
-  badge.textContent=active?'MA'+optLma+' ON':'OFF'; badge.style.background=active?'#7f1d1d':'#1e293b'; badge.style.color=active?'#fca5a5':'#475569';
+  badge.textContent=active?'MA'+optLma+' ON':'OFF'; badge.style.background=active?'#7f1d1d':'#1e293b'; badge.style.color=active?'#DC2626':'#475569';
   document.getElementById('pct-db').textContent=document.getElementById('s-db').value+'%';
   const sdb=document.getElementById('s-db');
   sdb.style.background='linear-gradient(to right,#fca5a5 '+sdb.value*2+'%,#E2E8F0 '+sdb.value*2+'%)';
@@ -684,8 +684,8 @@ function updBearTable(wts,dbe){
     const d=computePort(wts.w3,wts.w2,wts.w1,optFamily,m,dbe),st=oStats(d),a22=oAnnRet(d,2022),dd22=oMaxDD22(d),db22=dbDays22(optFamily,m);
     const isAct=(m===optLma);
     return '<tr style="'+(isAct?'background:'+f.blend+'12;outline:1px solid '+f.blend+'30':'')+'">'+
-      '<td style="font-weight:'+(isAct?800:400)+';color:'+(isAct?f.blend:'#e2e8f0')+'">'+(isAct?'● ':'')+( m?'MA'+m:'OFF')+( isAct?' <span style="font-size:9px;padding:1px 5px;border-radius:4px;background:'+f.blend+'20;color:'+f.blend+';font-weight:700">ACTIVE</span>':'')+'</td>'+
-      '<td style="text-align:right;color:'+(m?'#fca5a5':'#475569')+'">'+(m?db22+'d':'—')+'</td>'+
+      '<td style="font-weight:'+(isAct?800:400)+';color:'+(isAct?f.blend:'var(--text)')+'">'+(isAct?'● ':'')+( m?'MA'+m:'OFF')+( isAct?' <span style="font-size:9px;padding:1px 5px;border-radius:4px;background:'+f.blend+'20;color:'+f.blend+';font-weight:700">ACTIVE</span>':'')+'</td>'+
+      '<td style="text-align:right;color:'+(m?'#DC2626':'#475569')+'">'+(m?db22+'d':'—')+'</td>'+
       '<td style="text-align:right;font-weight:700;color:'+((a22||0)>=0?'#16A34A':'#DC2626')+'">'+(a22!=null?pct(a22):'—')+'</td>'+
       '<td style="text-align:right;color:#DC2626">'+(dd22!=null?dd22.toFixed(1)+'%':'—')+'</td>'+
       '<td style="text-align:right;color:#16A34A">+'+st.tr.toFixed(1)+'%</td>'+
@@ -755,7 +755,7 @@ function renderOptChart(daily){
       `<th style="text-align:left">Year</th><th style="text-align:right;color:${f.blend}">${blendLbl}</th>` +
       `<th style="text-align:right;color:#64748b">${f.bch} B&H</th><th style="text-align:right;color:#38bdf8">Alpha</th></tr></thead><tbody>`+
       years.map((y,i)=>{const v=ann[y]||0,b=annBH[y]||0,al=v-b,is22=y==='2022';
-        return `<tr style="${is22?'background:#1c1010':i%2===0?'background:#0f172a':''}"><td style="font-weight:700;color:${is22?'#fca5a5':'#e2e8f0'}">${y}${is22?' 🐻':''}</td><td style="text-align:right;font-weight:700;color:${v>=0?f.blend:'#ef4444'}">${pct(v)}</td><td style="text-align:right;color:${b>=0?'#64748b':'#7c3aed'}">${pct(b)}</td><td style="text-align:right;font-weight:700;color:${al>=0?'#38bdf8':'#fb923c'}">${pct(al)}pp</td></tr>`;
+        return `<tr style="${is22?'background:#1c1010':i%2===0?'background:#0f172a':''}"><td style="font-weight:700;color:${is22?'#DC2626':'var(--text)'}">${y}${is22?' 🐻':''}</td><td style="text-align:right;font-weight:700;color:${v>=0?f.blend:'#ef4444'}">${pct(v)}</td><td style="text-align:right;color:${b>=0?'#64748b':'#7c3aed'}">${pct(b)}</td><td style="text-align:right;font-weight:700;color:${al>=0?'#38bdf8':'#fb923c'}">${pct(al)}pp</td></tr>`;
       }).join('')+'</tbody></table></div>';
     const ctx=document.getElementById('opt-chart').getContext('2d');
     optChart=new Chart(ctx,{type:'bar',data:{labels:years,datasets:[
@@ -771,7 +771,7 @@ function renderOptChart(daily){
     const rows=YEARS.map(y=>({y,Q1:q[y+'Q1'],Q2:q[y+'Q2'],Q3:q[y+'Q3'],Q4:q[y+'Q4'],full:a[String(y)]})).filter(r=>r.Q1!=null||r.Q2!=null||r.Q3!=null||r.Q4!=null);
     body.innerHTML='<div style="overflow-x:auto"><table style="border-spacing:3px;border-collapse:separate;min-width:440px"><thead><tr>'+
       '<th style="text-align:left;padding:5px 9px">YEAR</th>'+['Q1','Q2','Q3','Q4','FULL'].map(h=>`<th style="text-align:center;min-width:74px;padding:5px 2px">${h}</th>`).join('')+'</tr></thead><tbody>'+
-      rows.map(r=>{const is22=r.y===2022;return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#fca5a5':'#cbd5e1'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+[r.Q1,r.Q2,r.Q3,r.Q4,r.full].map(v=>`<td style="padding:2px"><div class="heatcell" style="background:${heatBg(v)};color:${heatTx(v)}">${v!=null?pct(v):'—'}</div></td>`).join('')+'</tr>';}).join('')+
+      rows.map(r=>{const is22=r.y===2022;return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#DC2626':'#cbd5e1'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+[r.Q1,r.Q2,r.Q3,r.Q4,r.full].map(v=>`<td style="padding:2px"><div class="heatcell" style="background:${heatBg(v)};color:${heatTx(v)}">${v!=null?pct(v):'—'}</div></td>`).join('')+'</tr>';}).join('')+
       '</tbody></table></div>';
 
   } else {
