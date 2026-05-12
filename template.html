@@ -74,9 +74,9 @@ body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--bg);co
 .tbl-panel{background:var(--bg3);border-radius:11px;border:1px solid var(--border2);overflow:hidden;margin-bottom:12px}
 .tbl-head{padding:10px 16px 0;border-bottom:1px solid var(--border)}
 table{width:100%;border-collapse:collapse;font-size:11px}
-th{padding:8px 12px;color:var(--faint);font-weight:600;font-size:10px;letter-spacing:.06em;border-bottom:1px solid var(--border);background:#0f172a;white-space:nowrap;cursor:pointer}
+th{padding:8px 12px;color:var(--faint);font-weight:600;font-size:10px;letter-spacing:.06em;border-bottom:1px solid var(--border);background:#E5E7EB;white-space:nowrap;cursor:pointer}
 th:hover{color:var(--muted)}
-td{padding:7px 12px;border-bottom:1px solid #1e293b22;white-space:nowrap}
+td{padding:7px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
 tr:hover td{background:#1e3a5f22}
 tr.highlight td{background:var(--accent)15;outline:1px solid var(--accent)30}
 /* ── optimizer layout */
@@ -246,13 +246,13 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
     </div>
 
     <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--faint);margin:0 0 8px;border-top:1px solid var(--border);padding-top:10px">BULL REGIME WEIGHTS</div>
-    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#f87171" id="lbl-3x">3x &mdash; TQQQ</span><span class="sl-pct" style="color:#f87171" id="pct-3x">20%</span></div>
+    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#B91C1C" id="lbl-3x">3x &mdash; TQQQ</span><span class="sl-pct" style="color:#B91C1C" id="pct-3x">20%</span></div>
       <input type="range" id="s3" min="0" max="100" value="20"><div class="fb-row">
       <button class="fbtn" data-s="s3" data-d="-10">-10</button><button class="fbtn" data-s="s3" data-d="-5">-5</button><button class="fbtn" data-s="s3" data-d="+5">+5</button><button class="fbtn" data-s="s3" data-d="+10">+10</button></div></div>
-    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#fbbf24" id="lbl-2x">2x &mdash; QLD</span><span class="sl-pct" style="color:#fbbf24" id="pct-2x">30%</span></div>
+    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#92400E" id="lbl-2x">2x &mdash; QLD</span><span class="sl-pct" style="color:#92400E" id="pct-2x">30%</span></div>
       <input type="range" id="s2" min="0" max="100" value="30"><div class="fb-row">
       <button class="fbtn" data-s="s2" data-d="-10">-10</button><button class="fbtn" data-s="s2" data-d="-5">-5</button><button class="fbtn" data-s="s2" data-d="+5">+5</button><button class="fbtn" data-s="s2" data-d="+10">+10</button></div></div>
-    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#4ade80" id="lbl-1x">1x &mdash; QQQ</span><span class="sl-pct" style="color:#4ade80" id="pct-1x">50%</span></div>
+    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#15803D" id="lbl-1x">1x &mdash; QQQ</span><span class="sl-pct" style="color:#15803D" id="pct-1x">50%</span></div>
       <input type="range" id="s1" min="0" max="100" value="50"><div class="fb-row">
       <button class="fbtn" data-s="s1" data-d="-10">-10</button><button class="fbtn" data-s="s1" data-d="-5">-5</button><button class="fbtn" data-s="s1" data-d="+5">+5</button><button class="fbtn" data-s="s1" data-d="+10">+10</button></div></div>
 
@@ -285,10 +285,10 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
     </div>
 
     <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--faint);margin:10px 0 7px;border-top:1px solid var(--border);padding-top:9px">REGIME ALLOCATION</div>
-    <div class="r-row" style="background:#15803d22"><div class="r-dot" style="background:var(--bull)"></div><span class="r-name" style="color:var(--bull)">BULL</span><span style="color:var(--muted);font-size:10px" id="ra-bull">blend</span></div>
-    <div class="r-row" style="background:#b4530922"><div class="r-dot" style="background:var(--def)"></div><span class="r-name" style="color:var(--def)">DEFENSIVE</span><span style="color:var(--muted);font-size:10px" id="ra-def">75% base+25% BIL</span></div>
-    <div class="r-row" style="background:#ef444422"><div class="r-dot" style="background:var(--bear)"></div><span class="r-name" style="color:var(--bear)">BEAR</span><span style="color:var(--muted);font-size:10px">50% base+50% BIL</span></div>
-    <div class="r-row" id="db-rr" style="background:#7f1d1d33;opacity:.35"><div class="r-dot" style="background:#ef4444"></div><span class="r-name" style="color:var(--deep)">DEEP BEAR</span><span style="color:var(--muted);font-size:10px" id="ra-db">filter off</span><span id="db-badge" style="margin-left:auto;font-size:9px;padding:2px 6px;border-radius:10px;background:var(--bg3);color:var(--faint);font-weight:700">OFF</span></div>
+    <div class="r-row" style="background:#DCFCE7"><div class="r-dot" style="background:var(--bull)"></div><span class="r-name" style="color:var(--bull)">BULL</span><span style="color:var(--muted);font-size:10px" id="ra-bull">blend</span></div>
+    <div class="r-row" style="background:#FEF3C7"><div class="r-dot" style="background:var(--def)"></div><span class="r-name" style="color:var(--def)">DEFENSIVE</span><span style="color:var(--muted);font-size:10px" id="ra-def">75% base+25% BIL</span></div>
+    <div class="r-row" style="background:#FEE2E2"><div class="r-dot" style="background:var(--bear)"></div><span class="r-name" style="color:var(--bear)">BEAR</span><span style="color:var(--muted);font-size:10px">50% base+50% BIL</span></div>
+    <div class="r-row" id="db-rr" style="background:#FEF2F2;opacity:.7"><div class="r-dot" style="background:#ef4444"></div><span class="r-name" style="color:var(--deep)">DEEP BEAR</span><span style="color:var(--muted);font-size:10px" id="ra-db">filter off</span><span id="db-badge" style="margin-left:auto;font-size:9px;padding:2px 6px;border-radius:10px;background:var(--bg3);color:var(--faint);font-weight:700">OFF</span></div>
   </div>
 
   <!-- RESULTS -->
@@ -342,14 +342,14 @@ const OPT_DATA=__OPT_DATA__;
 
 // ── CHART.JS DEFAULTS ────────────────────────────────────────────────────
 Chart.defaults.color='#475569'; Chart.defaults.borderColor='#1e293b';
-const GC='#1e293b';
+const GC='#D1D5DB';
 
 // ── DASHBOARD DATA SETUP ──────────────────────────────────────────────────
 const STRAT_NAMES=Object.keys(DASH_DATA.strategies);
 const STRAT_COLORS={
-  'QQQ 3x':'#f87171','QQQ 2x':'#fbbf24','QQQ Blend':'#818cf8','QQQ 1x':'#4ade80',
-  'SPY 3x':'#fb923c','SPY 2x':'#a78bfa','SPY Blend':'#38bdf8','SPY 1x':'#6ee7b7',
-  'QQQ B&H':'#475569','SPY B&H':'#64748b'
+  'QQQ 3x':'#B91C1C','QQQ 2x':'#92400E','QQQ Blend':'#4338CA','QQQ 1x':'#15803D',
+  'SPY 3x':'#C2410C','SPY 2x':'#6D28D9','SPY Blend':'#0369A1','SPY 1x':'#0D9488',
+  'QQQ B&H':'#374151','SPY B&H':'#4B5563'
 };
 const YEARS=[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026];
 
@@ -364,14 +364,14 @@ function heatBg(v){
   if(v>=-3)return '#991b1b66';if(v>=-8)return '#991b1b99';
   if(v>=-15)return '#b91c1ccc';return '#7f1d1d';
 }
-function heatTx(v){return(v!=null&&Math.abs(v)>=10)?'#f8fafc':'#cbd5e1';}
+function heatTx(v){return(v!=null&&Math.abs(v)>=8)?'#f8fafc':'#1A1A1A';}
 
 // ── SIGNAL INIT ──────────────────────────────────────────────────────────
 function initSignals(){
   const d=DASH_DATA;
   document.getElementById('last-upd-date').textContent=d.last_updated;
   const sigNames={2:'BULL ▲',1:'DEFENSIVE ◆',0:'BEAR ▼',-1:'N/A'};
-  const sigCols={2:'#4ade80',1:'#fbbf24',0:'#f87171',-1:'#94a3b8'};
+  const sigCols={2:'#15803D',1:'#92400E',0:'#B91C1C',-1:'#6B7280'};
   for(const t of ['QQQ','SPY']){
     const s=d.signals[t];
     const col=sigCols[s.signal]||'#94a3b8';
@@ -381,7 +381,7 @@ function initSignals(){
     document.getElementById(t.toLowerCase()+'-sig-detail').textContent=
       s.signal===2?'Full leverage active':s.signal===1?'Defensive — 75%/25% BIL':'Bear — 50%/50% BIL';
     document.getElementById(t.toLowerCase()+'-ma-detail').innerHTML=
-      `<span style="color:#94a3b8">Price ${s.price}</span> &nbsp; MA25 ${s.ma25} &nbsp; MA50 ${s.ma50}`;
+      `<span style="color:#4B5563">Price ${s.price}</span> &nbsp; MA25 ${s.ma25} &nbsp; MA50 ${s.ma50}`;
     document.getElementById(t.toLowerCase()+'-sig-hdr').innerHTML=
       `<b>${t}:</b> <span style="color:${col};font-weight:700">${nm}</span>`;
   }
@@ -458,7 +458,7 @@ function renderDashChart(){
     ]},options:{responsive:true,maintainAspectRatio:true,aspectRatio:2.4,interaction:{mode:'index',intersect:false},
       scales:{x:{grid:{color:GC},ticks:{maxTicksLimit:11,callback:(v,i)=>months[i]&&months[i].endsWith('-01')?months[i].slice(0,4):''}},
               y:{grid:{color:GC},ticks:{callback:v=>pct(v/100,0)}}},
-      plugins:{legend:{display:true,position:'top',labels:{color:'#64748b',font:{size:10},boxWidth:16,padding:8}},
+      plugins:{legend:{display:true,position:'top',labels:{color:'#374151',font:{size:10},boxWidth:16,padding:8}},
         tooltip:{contentStyle:ttp,callbacks:{label:i=>`${i.dataset.label}: ${pct(i.raw/100)}`}}}}});
 
   } else if(dashChartTab==='ann'){
@@ -469,21 +469,21 @@ function renderDashChart(){
       '<th style="text-align:left">Year</th>'+
       `<th style="text-align:right;color:${col}">${dashStrat}</th>`+
       `<th style="text-align:right;color:#64748b">${bname}</th>`+
-      '<th style="text-align:right;color:#38bdf8">Alpha</th>'+
+      '<th style="text-align:right;color:#0369A1">Alpha</th>'+
       '</tr></thead><tbody>'+
       years.map((y,i)=>{
         const v=ann[y]||0,b=annb[y]||0,al=(v-b);
         const is22=(y==='2022');
         return `<tr style="${is22?'background:#1c1010;':''}${i%2===0&&!is22?'background:#0f172a':''}">
-          <td style="font-weight:700;color:${is22?'#fca5a5':'#e2e8f0'}">${y}${is22?' 🐻':''}</td>
+          <td style="font-weight:700;color:${is22?'#B91C1C':'#1A1A1A'}">${y}${is22?' 🐻':''}</td>
           <td style="text-align:right;font-weight:700;color:${v>=0?col:'#ef4444'}">${pct(v)}</td>
           <td style="text-align:right;color:${b>=0?'#64748b':'#7c3aed'}">${pct(b)}</td>
-          <td style="text-align:right;font-weight:700;color:${al>=0?'#38bdf8':'#fb923c'}">${pct(al)}pp</td>
+          <td style="text-align:right;font-weight:700;color:${al>=0?'#0369A1':'#C2410C'}">${pct(al)}pp</td>
         </tr>`;
       }).join('')+'</tbody></table></div>';
     const ctx=document.getElementById('dash-chart').getContext('2d');
     dashChart=new Chart(ctx,{type:'bar',data:{labels:years,datasets:[
-      {label:dashStrat,data:years.map(y=>ann[y]||0),backgroundColor:years.map(y=>(ann[y]||0)>=0?col+'cc':'#ef4444cc'),borderColor:years.map(y=>(ann[y]||0)>=0?col:'#ef4444'),borderWidth:1,borderRadius:3},
+      {label:dashStrat,data:years.map(y=>ann[y]||0),backgroundColor:years.map(y=>(ann[y]||0)>=0?col+'cc':'#ef4444cc'),borderColor:years.map(y=>(ann[y]||0)>=0?col:'#B91C1C'),borderWidth:1,borderRadius:3},
       {label:bname,data:years.map(y=>annb[y]||0),backgroundColor:years.map(y=>(annb[y]||0)>=0?'#33415566':'#7c3aed66'),borderColor:years.map(y=>(annb[y]||0)>=0?'#475569':'#7c3aed'),borderWidth:1,borderRadius:3}
     ]},options:{responsive:true,maintainAspectRatio:true,aspectRatio:2.6,interaction:{mode:'index',intersect:false},
       scales:{x:{grid:{color:GC}},y:{grid:{color:GC},ticks:{callback:v=>`${v>0?'+':''}${v.toFixed(0)}%`}}},
@@ -500,7 +500,7 @@ function renderDashChart(){
       '</tr></thead><tbody>'+
       rows.map(r=>{
         const is22=(r.y===2022);
-        return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#fca5a5':'#cbd5e1'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+
+        return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#B91C1C':'#1A1A1A'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+
           [r.Q1,r.Q2,r.Q3,r.Q4,r.full].map(v=>`<td style="padding:2px"><div class="heatcell" style="background:${heatBg(v)};color:${heatTx(v)}">${v!=null?pct(v):'—'}</div></td>`).join('')+'</tr>';
       }).join('')+'</tbody></table></div>';
     if(dashChart){dashChart.destroy();dashChart=null;}
@@ -515,7 +515,7 @@ function renderDashChart(){
     ]},options:{responsive:true,maintainAspectRatio:true,aspectRatio:2.4,interaction:{mode:'index',intersect:false},
       scales:{x:{grid:{color:GC},ticks:{maxTicksLimit:11,callback:(v,i)=>months[i]&&months[i].endsWith('-01')?months[i].slice(0,4):''}},
               y:{grid:{color:GC},ticks:{callback:v=>`${v.toFixed(0)}%`}}},
-      plugins:{legend:{display:true,position:'top',labels:{color:'#64748b',font:{size:10},boxWidth:16}},
+      plugins:{legend:{display:true,position:'top',labels:{color:'#374151',font:{size:10},boxWidth:16}},
         tooltip:{callbacks:{label:i=>`${i.dataset.label}: ${i.raw!=null?i.raw.toFixed(1)+'%':'—'}`}}}}});
   }
 }
@@ -538,15 +538,15 @@ function buildSummaryTable(){
     const isSel=(r.name===dashStrat);
     return `<tr class="${isSel?'highlight':''}" style="cursor:pointer" data-n="${r.name}">
       <td style="font-weight:${isSel?800:500};color:${col}"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${col};margin-right:6px;vertical-align:middle"></span>${r.name}</td>
-      <td style="text-align:right;font-weight:700;color:#4ade80">+${r.tr.toFixed(1)}%</td>
-      <td style="text-align:right;color:#4ade80">+${r.cagr.toFixed(1)}%</td>
-      <td style="text-align:right;color:#94a3b8">${r.vol.toFixed(1)}%</td>
-      <td style="text-align:right;font-weight:600;color:${r.sharpe>=0.8?'#4ade80':r.sharpe>=0.6?'#fbbf24':'#f87171'}">${r.sharpe.toFixed(2)}</td>
-      <td style="text-align:right;color:#f87171">${r.dd.toFixed(1)}%</td>
+      <td style="text-align:right;font-weight:700;color:#15803D">+${r.tr.toFixed(1)}%</td>
+      <td style="text-align:right;color:#15803D">+${r.cagr.toFixed(1)}%</td>
+      <td style="text-align:right;color:#4B5563">${r.vol.toFixed(1)}%</td>
+      <td style="text-align:right;font-weight:600;color:${r.sharpe>=0.8?'#15803D':r.sharpe>=0.6?'#92400E':'#B91C1C'}">${r.sharpe.toFixed(2)}</td>
+      <td style="text-align:right;color:#B91C1C">${r.dd.toFixed(1)}%</td>
       <td style="text-align:right;font-weight:600;color:${(r.y2022||0)>=0?'#4ade80':'#f87171'}">${r.y2022!=null?pct(r.y2022):'—'}</td>
       <td style="text-align:right;color:${(r.y2023||0)>=0?'#4ade80':'#f87171'}">${r.y2023!=null?pct(r.y2023):'—'}</td>
       <td style="text-align:right;color:${(r.y2024||0)>=0?'#4ade80':'#f87171'}">${r.y2024!=null?pct(r.y2024):'—'}</td>
-      <td style="text-align:right;color:#64748b">${r.trades}</td>
+      <td style="text-align:right;color:#374151">${r.trades}</td>
     </tr>`;
   }).join('');
   document.querySelectorAll('#summary-body tr').forEach(tr=>{
@@ -574,8 +574,8 @@ function buildSummaryTable(){
 // OPTIMIZER ENGINE
 // ══════════════════════════════════════════════════════════════════════════
 const FAM={
-  QQQ:{t3:'TQQQ',t2:'QLD',t1:'QQQ',bch:'QQQ',c3:'#f87171',c2:'#fbbf24',c1:'#4ade80',blend:'#818cf8'},
-  SPY:{t3:'SPXL',t2:'SSO',t1:'SPY', bch:'SPY',c3:'#f87171',c2:'#fbbf24',c1:'#4ade80',blend:'#38bdf8'}
+  QQQ:{t3:'TQQQ',t2:'QLD',t1:'QQQ',bch:'QQQ',c3:'#B91C1C',c2:'#92400E',c1:'#15803D',blend:'#4338CA'},
+  SPY:{t3:'SPXL',t2:'SSO',t1:'SPY',bch:'SPY',c3:'#B91C1C',c2:'#92400E',c1:'#15803D',blend:'#0369A1'}
 };
 const SIG={QQQ:OPT_DATA.signals.QQQ.split('').map(c=>+c-1),SPY:OPT_DATA.signals.SPY.split('').map(c=>+c-1)};
 const BELW={QQQ:{},SPY:{}};
@@ -752,7 +752,7 @@ function renderOptChart(daily){
       {label:f.bch+' B&H',data:data.map(d=>d.bh),borderColor:'#47556980',borderWidth:1.5,pointRadius:0,tension:0.1,backgroundColor:'transparent',borderDash:[5,3]}
     ]},options:{responsive:true,maintainAspectRatio:true,aspectRatio:2.4,interaction:{mode:'index',intersect:false},
       scales:{x:{grid:{color:GC},ticks:{maxTicksLimit:11,callback:(v,i)=>OPT_MONTHS[i]&&OPT_MONTHS[i].endsWith('-01')?OPT_MONTHS[i].slice(0,4):''}},y:{grid:{color:GC},ticks:{callback:v=>pct(v/100,0)}}},
-      plugins:{legend:{display:true,position:'top',labels:{color:'#64748b',font:{size:10},boxWidth:16,padding:8}},tooltip:{contentStyle:ttp,callbacks:{label:i=>`${i.dataset.label}: ${i.raw!=null?pct(i.raw/100):'—'}`}}}}});
+      plugins:{legend:{display:true,position:'top',labels:{color:'#374151',font:{size:10},boxWidth:16,padding:8}},tooltip:{contentStyle:ttp,callbacks:{label:i=>`${i.dataset.label}: ${i.raw!=null?pct(i.raw/100):'—'}`}}}}});
 
   } else if(optTab==='ann'){
     const ann=oAnnual(daily),annBH=oAnnual(rc.bh);
@@ -760,9 +760,9 @@ function renderOptChart(daily){
     body.innerHTML='<canvas id="opt-chart" style="max-height:240px"></canvas>'+
       '<div style="overflow-x:auto;margin-top:8px"><table><thead><tr>'+
       `<th style="text-align:left">Year</th><th style="text-align:right;color:${f.blend}">${blendLbl}</th>` +
-      `<th style="text-align:right;color:#64748b">${f.bch} B&H</th><th style="text-align:right;color:#38bdf8">Alpha</th></tr></thead><tbody>`+
+      `<th style="text-align:right;color:#64748b">${f.bch} B&H</th><th style="text-align:right;color:#0369A1">Alpha</th></tr></thead><tbody>`+
       years.map((y,i)=>{const v=ann[y]||0,b=annBH[y]||0,al=v-b,is22=y==='2022';
-        return `<tr style="${is22?'background:#1c1010':i%2===0?'background:#0f172a':''}"><td style="font-weight:700;color:${is22?'#fca5a5':'#e2e8f0'}">${y}${is22?' 🐻':''}</td><td style="text-align:right;font-weight:700;color:${v>=0?f.blend:'#ef4444'}">${pct(v)}</td><td style="text-align:right;color:${b>=0?'#64748b':'#7c3aed'}">${pct(b)}</td><td style="text-align:right;font-weight:700;color:${al>=0?'#38bdf8':'#fb923c'}">${pct(al)}pp</td></tr>`;
+        return `<tr style="${is22?'background:#1c1010':i%2===0?'background:#0f172a':''}"><td style="font-weight:700;color:${is22?'#B91C1C':'#1A1A1A'}">${y}${is22?' 🐻':''}</td><td style="text-align:right;font-weight:700;color:${v>=0?f.blend:'#ef4444'}">${pct(v)}</td><td style="text-align:right;color:${b>=0?'#64748b':'#7c3aed'}">${pct(b)}</td><td style="text-align:right;font-weight:700;color:${al>=0?'#0369A1':'#C2410C'}">${pct(al)}pp</td></tr>`;
       }).join('')+'</tbody></table></div>';
     const ctx=document.getElementById('opt-chart').getContext('2d');
     optChart=new Chart(ctx,{type:'bar',data:{labels:years,datasets:[
@@ -778,7 +778,7 @@ function renderOptChart(daily){
     const rows=YEARS.map(y=>({y,Q1:q[y+'Q1'],Q2:q[y+'Q2'],Q3:q[y+'Q3'],Q4:q[y+'Q4'],full:a[String(y)]})).filter(r=>r.Q1!=null||r.Q2!=null||r.Q3!=null||r.Q4!=null);
     body.innerHTML='<div style="overflow-x:auto"><table style="border-spacing:3px;border-collapse:separate;min-width:440px"><thead><tr>'+
       '<th style="text-align:left;padding:5px 9px">YEAR</th>'+['Q1','Q2','Q3','Q4','FULL'].map(h=>`<th style="text-align:center;min-width:74px;padding:5px 2px">${h}</th>`).join('')+'</tr></thead><tbody>'+
-      rows.map(r=>{const is22=r.y===2022;return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#fca5a5':'#cbd5e1'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+[r.Q1,r.Q2,r.Q3,r.Q4,r.full].map(v=>`<td style="padding:2px"><div class="heatcell" style="background:${heatBg(v)};color:${heatTx(v)}">${v!=null?pct(v):'—'}</div></td>`).join('')+'</tr>';}).join('')+
+      rows.map(r=>{const is22=r.y===2022;return `<tr style="${is22?'outline:1px solid #ef444433':''}"><td style="font-weight:700;color:${is22?'#B91C1C':'#1A1A1A'};padding:3px 9px">${r.y}${is22?' 🐻':''}</td>`+[r.Q1,r.Q2,r.Q3,r.Q4,r.full].map(v=>`<td style="padding:2px"><div class="heatcell" style="background:${heatBg(v)};color:${heatTx(v)}">${v!=null?pct(v):'—'}</div></td>`).join('')+'</tr>';}).join('')+
       '</tbody></table></div>';
 
   } else {
@@ -791,7 +791,7 @@ function renderOptChart(daily){
       {label:f.bch+' B&H',data:data.map(d=>d.bh),borderColor:'#47556988',borderWidth:1.5,pointRadius:0,tension:0.1,backgroundColor:'transparent',borderDash:[5,3]}
     ]},options:{responsive:true,maintainAspectRatio:true,aspectRatio:2.4,interaction:{mode:'index',intersect:false},
       scales:{x:{grid:{color:GC},ticks:{maxTicksLimit:11,callback:(v,i)=>OPT_MONTHS[i]&&OPT_MONTHS[i].endsWith('-01')?OPT_MONTHS[i].slice(0,4):''}},y:{grid:{color:GC},ticks:{callback:v=>`${v.toFixed(0)}%`}}},
-      plugins:{legend:{display:true,position:'top',labels:{color:'#64748b',font:{size:10},boxWidth:16}},tooltip:{callbacks:{label:i=>`${i.dataset.label}: ${i.raw!=null?i.raw.toFixed(1)+'%':'—'}`}}}}});
+      plugins:{legend:{display:true,position:'top',labels:{color:'#374151',font:{size:10},boxWidth:16}},tooltip:{callbacks:{label:i=>`${i.dataset.label}: ${i.raw!=null?i.raw.toFixed(1)+'%':'—'}`}}}}});
   }
 }
 
