@@ -103,7 +103,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
 .ma-btns{display:flex;gap:4px;margin-bottom:8px}
 .ma-btn{flex:1;padding:7px 3px;border-radius:6px;border:1px solid var(--border2);background:var(--bg3);color:var(--faint);font-size:10px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s}
 .ma-btn.active-off{border-color:var(--border2);background:var(--bg2);color:var(--muted)}
-.ma-btn.active-on{border-color:#ef444480;background:#200a0a;color:var(--deep)}
+.ma-btn.active-on{border-color:#DC2626;background:#FEE2E2;color:#991B1B;font-weight:800}
 /* ── presets */
 .preset-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:4px}
 .pb{background:var(--bg3);border:1px solid var(--border2);color:var(--faint);font-size:10px;font-weight:700;padding:6px 3px;border-radius:6px;cursor:pointer;text-align:center;line-height:1.4;transition:all .15s}
@@ -116,7 +116,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
 /* ── bear table */
 .bear-panel{background:var(--bg3);border-radius:10px;border:1px solid #ef444422;overflow:hidden;margin-bottom:10px}
 /* ── footer */
-#footer{margin:0 20px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 16px;font-size:10px;color:var(--fainter);line-height:1.7}
+#footer{margin:0 20px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 16px;font-size:10px;color:var(--muted);line-height:1.7}
 .heatcell{border-radius:5px;padding:7px 4px;text-align:center;font-weight:700;font-size:11px;min-width:70px}
 .pos-arrow{color:var(--bull);font-weight:700}
 .neg-arrow{color:var(--bear);font-weight:700}
@@ -149,7 +149,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
   <button class="main-tab" data-page="opt">&#x2699;&#xFE0F; Blend Optimizer</button>
   <div id="signal-ticker">
     <span id="qqq-sig-hdr"></span>
-    <span style="color:var(--fainter)">|</span>
+    <span style="color:var(--muted)">|</span>
     <span id="spy-sig-hdr"></span>
   </div>
 </div>
@@ -239,39 +239,39 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
 
   <!-- CONTROLS -->
   <div id="opt-ctrl">
-    <div style="font-size:10px;color:var(--faint);font-weight:700;letter-spacing:.1em;margin-bottom:10px">FAMILY</div>
+    <div style="font-size:10px;color:var(--muted);font-weight:700;letter-spacing:.1em;margin-bottom:10px">FAMILY</div>
     <div style="display:flex;gap:5px;margin-bottom:14px">
       <button class="fam-btn" data-fam="QQQ" style="flex:1;padding:8px;border-radius:7px;border:1px solid var(--border2);cursor:pointer;font-size:11px;font-weight:700;background:var(--accent);color:white;box-shadow:0 0 12px #4f46e540">QQQ (Nasdaq-100)</button>
       <button class="fam-btn" data-fam="SPY" style="flex:1;padding:8px;border-radius:7px;border:1px solid var(--border2);cursor:pointer;font-size:11px;font-weight:700;background:var(--bg3);color:var(--faint)">SPY (S&amp;P 500)</button>
     </div>
 
-    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--faint);margin:0 0 8px;border-top:1px solid var(--border);padding-top:10px">BULL REGIME WEIGHTS</div>
-    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#f87171" id="lbl-3x">3x &mdash; TQQQ</span><span class="sl-pct" style="color:#f87171" id="pct-3x">20%</span></div>
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin:0 0 8px;border-top:1px solid var(--border);padding-top:10px">BULL REGIME WEIGHTS</div>
+    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#DC2626" id="lbl-3x">3x &mdash; TQQQ</span><span class="sl-pct" style="color:#DC2626" id="pct-3x">20%</span></div>
       <input type="range" id="s3" min="0" max="100" value="20"><div class="fb-row">
       <button class="fbtn" data-s="s3" data-d="-10">-10</button><button class="fbtn" data-s="s3" data-d="-5">-5</button><button class="fbtn" data-s="s3" data-d="+5">+5</button><button class="fbtn" data-s="s3" data-d="+10">+10</button></div></div>
-    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#fbbf24" id="lbl-2x">2x &mdash; QLD</span><span class="sl-pct" style="color:#fbbf24" id="pct-2x">30%</span></div>
+    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#B45309" id="lbl-2x">2x &mdash; QLD</span><span class="sl-pct" style="color:#B45309" id="pct-2x">30%</span></div>
       <input type="range" id="s2" min="0" max="100" value="30"><div class="fb-row">
       <button class="fbtn" data-s="s2" data-d="-10">-10</button><button class="fbtn" data-s="s2" data-d="-5">-5</button><button class="fbtn" data-s="s2" data-d="+5">+5</button><button class="fbtn" data-s="s2" data-d="+10">+10</button></div></div>
-    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#4ade80" id="lbl-1x">1x &mdash; QQQ</span><span class="sl-pct" style="color:#4ade80" id="pct-1x">50%</span></div>
+    <div class="sl-row"><div class="sl-head"><span class="sl-lbl" style="color:#16A34A" id="lbl-1x">1x &mdash; QQQ</span><span class="sl-pct" style="color:#16A34A" id="pct-1x">50%</span></div>
       <input type="range" id="s1" min="0" max="100" value="50"><div class="fb-row">
       <button class="fbtn" data-s="s1" data-d="-10">-10</button><button class="fbtn" data-s="s1" data-d="-5">-5</button><button class="fbtn" data-s="s1" data-d="+5">+5</button><button class="fbtn" data-s="s1" data-d="+10">+10</button></div></div>
 
     <div class="lev-bar"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:9px;color:var(--faint);font-weight:700;letter-spacing:.07em">BULL LEVERAGE</span><span id="lev-val" style="font-size:20px;font-weight:800;color:var(--qqq)">1.70x</span></div>
       <div class="lev-track"><div class="lev-fill" id="lev-fill"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--fainter);margin-top:2px"><span>1x</span><span>2x</span><span>3x</span></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-top:2px"><span>1x</span><span>2x</span><span>3x</span></div></div>
 
-    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--faint);margin:10px 0 7px;border-top:1px solid var(--border);padding-top:9px">PRESETS</div>
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin:10px 0 7px;border-top:1px solid var(--border);padding-top:9px">PRESETS</div>
     <div class="preset-grid">
-      <button class="pb" data-w="0,0,100">Pure 1x<br><small style="color:var(--fainter)">1.0x</small></button>
-      <button class="pb" data-w="0,100,0">Pure 2x<br><small style="color:var(--fainter)">2.0x</small></button>
-      <button class="pb" data-w="100,0,0">Pure 3x<br><small style="color:var(--fainter)">3.0x</small></button>
-      <button class="pb active" data-w="20,30,50">Conserv.<br><small style="color:var(--fainter)">1.7x</small></button>
-      <button class="pb" data-w="30,40,30">Balanced<br><small style="color:var(--fainter)">2.0x</small></button>
-      <button class="pb" data-w="50,30,20">Aggress.<br><small style="color:var(--fainter)">2.3x</small></button>
+      <button class="pb" data-w="0,0,100">Pure 1x<br><small style="color:var(--muted)">1.0x</small></button>
+      <button class="pb" data-w="0,100,0">Pure 2x<br><small style="color:var(--muted)">2.0x</small></button>
+      <button class="pb" data-w="100,0,0">Pure 3x<br><small style="color:var(--muted)">3.0x</small></button>
+      <button class="pb active" data-w="20,30,50">Conserv.<br><small style="color:var(--muted)">1.7x</small></button>
+      <button class="pb" data-w="30,40,30">Balanced<br><small style="color:var(--muted)">2.0x</small></button>
+      <button class="pb" data-w="50,30,20">Aggress.<br><small style="color:var(--muted)">2.3x</small></button>
     </div>
 
-    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--faint);margin:10px 0 7px;border-top:1px solid var(--border);padding-top:9px">DEEP BEAR FILTER</div>
-    <div style="font-size:10px;color:var(--faint);margin-bottom:8px;line-height:1.6">When in Bear, if price also falls below a long-term MA, shift to <b style="color:var(--deep)">Deep Bear</b>. Targets grinding downtrends like 2022.</div>
+    <div style="font-size:9px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin:10px 0 7px;border-top:1px solid var(--border);padding-top:9px">DEEP BEAR FILTER</div>
+    <div style="font-size:10px;color:var(--muted);margin-bottom:8px;line-height:1.6">When in Bear, if price also falls below a long-term MA, shift to <b style="color:var(--deep)">Deep Bear</b>. Targets grinding downtrends like 2022.</div>
     <div class="ma-btns">
       <button class="ma-btn active-off" data-ma="0">OFF</button>
       <button class="ma-btn" data-ma="100">MA100</button>
@@ -280,7 +280,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;cur
     </div>
     <div class="sl-row" id="db-row" style="opacity:.4;pointer-events:none">
       <div class="sl-head"><span class="sl-lbl" style="color:var(--deep)">Deep Bear Equity %</span><span class="sl-pct" style="color:var(--deep)" id="pct-db">0%</span></div>
-      <input type="range" id="s-db" min="0" max="50" value="0" style="background:linear-gradient(to right,#fca5a5 0%,#334155 0%)">
+      <input type="range" id="s-db" min="0" max="50" value="0" style="background:linear-gradient(to right,#fca5a5 0%,#E2E8F0 0%)">
       <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--faint);margin-top:2px"><span>0% (full cash)</span><span>50%</span></div>
     </div>
 
@@ -430,7 +430,7 @@ function updateDashboard(){
   kpis.forEach(k=>{
     document.getElementById('kpi-'+k.id).textContent=k.v;
     document.getElementById('kpi-'+k.id).style.color=col;
-    document.getElementById('kpi-'+k.id+'-c').innerHTML=k.c+' <span style="color:'+(k.up?'#4ade80':'#f87171')+'">'+(k.up?'▲':'▼')+'</span>';
+    document.getElementById('kpi-'+k.id+'-c').innerHTML=k.c+' <span style="color:'+(k.up?'#16A34A':'#DC2626')+'">'+(k.up?'▲':'▼')+'</span>';
   });
   renderDashChart();
 }
@@ -567,8 +567,8 @@ function buildSummaryTable(){
 // OPTIMIZER ENGINE
 // ══════════════════════════════════════════════════════════════════════════
 const FAM={
-  QQQ:{t3:'TQQQ',t2:'QLD',t1:'QQQ',bch:'QQQ',c3:'#f87171',c2:'#fbbf24',c1:'#4ade80',blend:'#818cf8'},
-  SPY:{t3:'SPXL',t2:'SSO',t1:'SPY', bch:'SPY',c3:'#f87171',c2:'#fbbf24',c1:'#4ade80',blend:'#38bdf8'}
+  QQQ:{t3:'TQQQ',t2:'QLD',t1:'QQQ',bch:'QQQ',c3:'#DC2626',c2:'#B45309',c1:'#16A34A',blend:'#818cf8'},
+  SPY:{t3:'SPXL',t2:'SSO',t1:'SPY', bch:'SPY',c3:'#DC2626',c2:'#B45309',c1:'#16A34A',blend:'#38bdf8'}
 };
 const SIG={QQQ:OPT_DATA.signals.QQQ.split('').map(c=>+c-1),SPY:OPT_DATA.signals.SPY.split('').map(c=>+c-1)};
 const BELW={QQQ:{},SPY:{}};
@@ -635,9 +635,9 @@ function updOptSliders(wts){
   document.getElementById('pct-1x').textContent=wts.p1.toFixed(1)+'%';
   ['s3','s2','s1'].forEach((id,j)=>{
     const el=document.getElementById(id),cols=[f.c3,f.c2,f.c1];
-    el.style.background='linear-gradient(to right,'+cols[j]+' '+el.value+'%,#334155 '+el.value+'%)';
+    el.style.background='linear-gradient(to right,'+cols[j]+' '+el.value+'%,#E2E8F0 '+el.value+'%)';
   });
-  const lev=wts.lev,col=lev<=1.3?'#4ade80':lev<=1.8?'#818cf8':lev<=2.3?'#fbbf24':'#f87171';
+  const lev=wts.lev,col=lev<=1.3?'#16A34A':lev<=1.8?'#818cf8':lev<=2.3?'#B45309':'#DC2626';
   document.getElementById('lev-val').textContent=lev.toFixed(2)+'x';
   document.getElementById('lev-val').style.color=col;
   document.getElementById('lev-fill').style.cssText='width:'+Math.min(100,(lev-1)/2*100)+'%;background:'+col;
@@ -663,7 +663,7 @@ function updDBCtrl(){
   badge.textContent=active?'MA'+optLma+' ON':'OFF'; badge.style.background=active?'#7f1d1d':'#1e293b'; badge.style.color=active?'#fca5a5':'#475569';
   document.getElementById('pct-db').textContent=document.getElementById('s-db').value+'%';
   const sdb=document.getElementById('s-db');
-  sdb.style.background='linear-gradient(to right,#fca5a5 '+sdb.value*2+'%,#334155 '+sdb.value*2+'%)';
+  sdb.style.background='linear-gradient(to right,#fca5a5 '+sdb.value*2+'%,#E2E8F0 '+sdb.value*2+'%)';
 }
 
 function updOptKPIs(st,bh,col){
@@ -674,7 +674,7 @@ function updOptKPIs(st,bh,col){
    ['dd',st.dd.toFixed(1)+'%','vs '+bh.dd.toFixed(1)+'%',st.dd>bh.dd]
   ].forEach(([id,v,c,up])=>{
     document.getElementById('ok-'+id).textContent=v; document.getElementById('ok-'+id).style.color=col;
-    document.getElementById('ok-'+id+'-c').innerHTML=c+' <span style="color:'+(up?'#4ade80':'#f87171')+'">'+(up?'▲':'▼')+'</span>';
+    document.getElementById('ok-'+id+'-c').innerHTML=c+' <span style="color:'+(up?'#16A34A':'#DC2626')+'">'+(up?'▲':'▼')+'</span>';
   });
 }
 
@@ -686,12 +686,12 @@ function updBearTable(wts,dbe){
     return '<tr style="'+(isAct?'background:'+f.blend+'12;outline:1px solid '+f.blend+'30':'')+'">'+
       '<td style="font-weight:'+(isAct?800:400)+';color:'+(isAct?f.blend:'#e2e8f0')+'">'+(isAct?'● ':'')+( m?'MA'+m:'OFF')+( isAct?' <span style="font-size:9px;padding:1px 5px;border-radius:4px;background:'+f.blend+'20;color:'+f.blend+';font-weight:700">ACTIVE</span>':'')+'</td>'+
       '<td style="text-align:right;color:'+(m?'#fca5a5':'#475569')+'">'+(m?db22+'d':'—')+'</td>'+
-      '<td style="text-align:right;font-weight:700;color:'+((a22||0)>=0?'#4ade80':'#f87171')+'">'+(a22!=null?pct(a22):'—')+'</td>'+
-      '<td style="text-align:right;color:#f87171">'+(dd22!=null?dd22.toFixed(1)+'%':'—')+'</td>'+
-      '<td style="text-align:right;color:#4ade80">+'+st.tr.toFixed(1)+'%</td>'+
-      '<td style="text-align:right;color:#4ade80">+'+st.cagr.toFixed(1)+'%</td>'+
-      '<td style="text-align:right;color:'+(st.sharpe>=0.8?'#4ade80':st.sharpe>=0.6?'#fbbf24':'#f87171')+'">'+st.sharpe.toFixed(2)+'</td>'+
-      '<td style="text-align:right;color:#f87171">'+st.dd.toFixed(1)+'%</td></tr>';
+      '<td style="text-align:right;font-weight:700;color:'+((a22||0)>=0?'#16A34A':'#DC2626')+'">'+(a22!=null?pct(a22):'—')+'</td>'+
+      '<td style="text-align:right;color:#DC2626">'+(dd22!=null?dd22.toFixed(1)+'%':'—')+'</td>'+
+      '<td style="text-align:right;color:#16A34A">+'+st.tr.toFixed(1)+'%</td>'+
+      '<td style="text-align:right;color:#16A34A">+'+st.cagr.toFixed(1)+'%</td>'+
+      '<td style="text-align:right;color:'+(st.sharpe>=0.8?'#16A34A':st.sharpe>=0.6?'#B45309':'#DC2626')+'">'+st.sharpe.toFixed(2)+'</td>'+
+      '<td style="text-align:right;color:#DC2626">'+st.dd.toFixed(1)+'%</td></tr>';
   }).join('');
 }
 
@@ -701,23 +701,23 @@ function updCmpTable(bst,wts,dbe){
   const a22b=oAnnRet(d,2022);
   const rows=[
     {lbl:'Custom Blend',sub:wts.p3.toFixed(1)+'% '+f.t3+'+'+wts.p2.toFixed(1)+'% '+f.t2+'+'+wts.p1.toFixed(1)+'% '+f.t1,lev:wts.lev,st:bst,a22:a22b,col:f.blend,bold:true},
-    {lbl:'3x Pure',sub:'100% '+f.t3,lev:3,st:rc.s3,a22:oAnnRet(rc.d3,2022),col:'#f87171',click:()=>{document.getElementById('s3').value=100;document.getElementById('s2').value=0;document.getElementById('s1').value=0;updateOpt();}},
-    {lbl:'2x Pure',sub:'100% '+f.t2,lev:2,st:rc.s2,a22:oAnnRet(rc.d2,2022),col:'#fbbf24',click:()=>{document.getElementById('s3').value=0;document.getElementById('s2').value=100;document.getElementById('s1').value=0;updateOpt();}},
-    {lbl:'1x Pure',sub:'100% '+f.t1,lev:1,st:rc.s1,a22:oAnnRet(rc.d1,2022),col:'#4ade80',click:()=>{document.getElementById('s3').value=0;document.getElementById('s2').value=0;document.getElementById('s1').value=100;updateOpt();}},
+    {lbl:'3x Pure',sub:'100% '+f.t3,lev:3,st:rc.s3,a22:oAnnRet(rc.d3,2022),col:'#DC2626',click:()=>{document.getElementById('s3').value=100;document.getElementById('s2').value=0;document.getElementById('s1').value=0;updateOpt();}},
+    {lbl:'2x Pure',sub:'100% '+f.t2,lev:2,st:rc.s2,a22:oAnnRet(rc.d2,2022),col:'#B45309',click:()=>{document.getElementById('s3').value=0;document.getElementById('s2').value=100;document.getElementById('s1').value=0;updateOpt();}},
+    {lbl:'1x Pure',sub:'100% '+f.t1,lev:1,st:rc.s1,a22:oAnnRet(rc.d1,2022),col:'#16A34A',click:()=>{document.getElementById('s3').value=0;document.getElementById('s2').value=0;document.getElementById('s1').value=100;updateOpt();}},
     {lbl:f.bch+' B&H',sub:'Buy & Hold',lev:1,st:rc.sbh,a22:oAnnRet(rc.bh,2022),col:'#64748b'}
   ];
   document.getElementById('opt-cmp-body').innerHTML=rows.map((r,i)=>{
-    const a22c=(r.a22||0)>=0?'#4ade80':'#f87171';
+    const a22c=(r.a22||0)>=0?'#16A34A':'#DC2626';
     return '<tr style="cursor:'+(r.click?'pointer':'default')+';background:'+(r.bold?r.col+'12':i%2===0?'#0f172a':'transparent')+'"'+
       (r.click?' class="opt-cmp-row"':'')+'>'+ 
       '<td style="font-weight:'+(r.bold?800:500)+';color:'+r.col+'"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:'+r.col+';margin-right:5px;vertical-align:middle"></span>'+r.lbl+'</td>'+
       '<td style="text-align:right;color:#64748b;font-size:10px">'+r.sub+'</td>'+
       '<td style="text-align:right;color:#94a3b8">'+r.lev.toFixed(1)+'x</td>'+
-      '<td style="text-align:right;font-weight:700;color:#4ade80">+'+r.st.tr.toFixed(1)+'%</td>'+
-      '<td style="text-align:right;color:#4ade80">+'+r.st.cagr.toFixed(1)+'%</td>'+
+      '<td style="text-align:right;font-weight:700;color:#16A34A">+'+r.st.tr.toFixed(1)+'%</td>'+
+      '<td style="text-align:right;color:#16A34A">+'+r.st.cagr.toFixed(1)+'%</td>'+
       '<td style="text-align:right;color:#94a3b8">'+r.st.vol.toFixed(1)+'%</td>'+
-      '<td style="text-align:right;font-weight:600;color:'+(r.st.sharpe>=0.8?'#4ade80':r.st.sharpe>=0.6?'#fbbf24':'#f87171')+'">'+r.st.sharpe.toFixed(2)+'</td>'+
-      '<td style="text-align:right;color:#f87171">'+r.st.dd.toFixed(1)+'%</td>'+
+      '<td style="text-align:right;font-weight:600;color:'+(r.st.sharpe>=0.8?'#16A34A':r.st.sharpe>=0.6?'#B45309':'#DC2626')+'">'+r.st.sharpe.toFixed(2)+'</td>'+
+      '<td style="text-align:right;color:#DC2626">'+r.st.dd.toFixed(1)+'%</td>'+
       '<td style="text-align:right;font-weight:600;color:'+a22c+'">'+(r.a22!=null?pct(r.a22):'—')+'</td></tr>';
   }).join('');
   document.querySelectorAll('.opt-cmp-row').forEach((row,i)=>{
@@ -739,9 +739,9 @@ function renderOptChart(daily){
     const ctx=document.getElementById('opt-chart').getContext('2d');
     optChart=new Chart(ctx,{type:'line',data:{labels:OPT_MONTHS,datasets:[
       {label:blendLbl,data:data.map(d=>d.blend),borderColor:f.blend,borderWidth:2.5,pointRadius:0,tension:0.1,backgroundColor:'transparent'},
-      {label:'3x Pure',data:data.map(d=>d.p3),borderColor:'#f8717166',borderWidth:1.2,pointRadius:0,tension:0.1,backgroundColor:'transparent',borderDash:[3,2]},
-      {label:'2x Pure',data:data.map(d=>d.p2),borderColor:'#fbbf2466',borderWidth:1.2,pointRadius:0,tension:0.1,backgroundColor:'transparent',borderDash:[3,2]},
-      {label:'1x Pure',data:data.map(d=>d.p1),borderColor:'#4ade8066',borderWidth:1.2,pointRadius:0,tension:0.1,backgroundColor:'transparent',borderDash:[3,2]},
+      {label:'3x Pure',data:data.map(d=>d.p3),borderColor:'#DC262640',borderWidth:1.2,pointRadius:0,tension:0.1,backgroundColor:'transparent',borderDash:[3,2]},
+      {label:'2x Pure',data:data.map(d=>d.p2),borderColor:'#B4530940',borderWidth:1.2,pointRadius:0,tension:0.1,backgroundColor:'transparent',borderDash:[3,2]},
+      {label:'1x Pure',data:data.map(d=>d.p1),borderColor:'#16A34A40',borderWidth:1.2,pointRadius:0,tension:0.1,backgroundColor:'transparent',borderDash:[3,2]},
       {label:f.bch+' B&H',data:data.map(d=>d.bh),borderColor:'#47556980',borderWidth:1.5,pointRadius:0,tension:0.1,backgroundColor:'transparent',borderDash:[5,3]}
     ]},options:{responsive:true,maintainAspectRatio:true,aspectRatio:2.4,interaction:{mode:'index',intersect:false},
       scales:{x:{grid:{color:GC},ticks:{maxTicksLimit:11,callback:(v,i)=>OPT_MONTHS[i]&&OPT_MONTHS[i].endsWith('-01')?OPT_MONTHS[i].slice(0,4):''}},y:{grid:{color:GC},ticks:{callback:v=>pct(v/100,0)}}},
