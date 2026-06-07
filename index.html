@@ -367,6 +367,11 @@ function heatBg(v){
 function heatTx(v){return(v!=null&&Math.abs(v)>=10)?'#f8fafc':'#cbd5e1';}
 
 // ── SIGNAL INIT ──────────────────────────────────────────────────────────
+function computeSignal(price,ma25,ma50){
+  if(price>ma25&&price>ma50)return 2;
+  if(price<ma25&&price<ma50)return 0;
+  return 1;
+}
 function initSignals(){
   const d=DASH_DATA;
   document.getElementById('last-upd-date').textContent=d.last_updated;
@@ -374,12 +379,13 @@ function initSignals(){
   function getSigCol(s){return s===2?'#16A34A':s===1?'#B45309':s===0?'#DC2626':'#94a3b8';}
   for(const t of ['QQQ','SPY']){
     const s=d.signals[t];
-    const col=getSigCol(s.signal)||'#94a3b8';
-    const nm=getSigName(s.signal)||'--';
+    const sig=computeSignal(s.price,s.ma25,s.ma50);
+    const col=getSigCol(sig)||'#94a3b8';
+    const nm=getSigName(sig)||'--';
     document.getElementById(t.toLowerCase()+'-sig-val').textContent=nm;
     document.getElementById(t.toLowerCase()+'-sig-val').style.color=col;
     document.getElementById(t.toLowerCase()+'-sig-detail').textContent=
-      s.signal===2?'Full leverage active':s.signal===1?'Defensive - 75%/25% BIL':'Bear - 50%/50% BIL';
+      sig===2?'Full leverage active':sig===1?'Defensive - 75%/25% BIL':'Bear - 50%/50% BIL';
     document.getElementById(t.toLowerCase()+'-ma-detail').innerHTML=
       '<span style="color:var(--muted)">Price '+s.price+'</span> &nbsp; MA25 '+s.ma25+' &nbsp; MA50 '+s.ma50;
     document.getElementById(t.toLowerCase()+'-sig-hdr').innerHTML=
