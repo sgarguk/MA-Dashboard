@@ -4,8 +4,8 @@ Lighthouse Canton — Tactical MA Dashboard & Optimizer
 Generates index.html with embedded data. Run daily at market close.
 Usage: python build.py
 """
-import yfinance as yf, pandas as pd, numpy as np, json, warnings, sys, os
-from datetime import datetime, date
+import yfinance as yf, pandas as pd, numpy as np, json, warnings, sys, os, time
+from datetime import datetime, date, timedelta
 warnings.filterwarnings('ignore')
 
 TICKERS=['QQQ','TQQQ','BIL','SPY','QLD','SSO','SPXL']
@@ -23,15 +23,45 @@ STRATEGIES=[
     ('SPY 1x',    'SPY', {'SPY':1.0}),
 ]
 
+def expected_latest_trade_date():
+    """Latest US trading day whose close should be available from the data provider."""
+    d = datetime.utcnow().date()
+    # The US close is 16:00 ET (20:00/21:00 UTC). Before ~21:30 UTC the same-day
+    # close may not be finalized by the provider, so treat "today" as not closed yet.
+    if datetime.utcnow().time() < datetime.strptime("21:30", "%H:%M").time():
+        d -= timedelta(days=1)
+    while d.weekday() >= 5:  # roll back over weekends
+        d -= timedelta(days=1)
+    return d
+
+
+def download_prices():
+    pd_dict = {}
+    for t in TICKERS:
+        df = yf.download(t, start=START, progress=False, auto_adjust=True)
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = df.columns.get_level_values(0)
+        pd_dict[t] = df['Close']
+    return pd.DataFrame(pd_dict).sort_index().ffill()
+
+
 def run():
     print(f"[{datetime.now():%Y-%m-%d %H:%M}] Downloading data...")
-    pd_dict={}
-    for t in TICKERS:
-        df=yf.download(t,start=START,progress=False,auto_adjust=True)
-        if isinstance(df.columns,pd.MultiIndex): df.columns=df.columns.get_level_values(0)
-        pd_dict[t]=df['Close']
-    prices=pd.DataFrame(pd_dict).sort_index().ffill()
-    last_date=str(prices.index[-1].date())
+    prices = download_prices()
+    last_date = str(prices.index[-1].date())
+
+    # Guard against publishing a stale day: retry briefly if the provider has not
+    # yet finalized the most recent close.
+    expected = expected_latest_trade_date()
+    attempts = 0
+    while last_date < str(expected) and attempts < 3:
+        attempts += 1
+        print(f"  Latest {last_date} < expected {expected}; retrying in 5 min ({attempts}/3)...")
+        time.sleep(300)
+        prices = download_prices()
+        last_date = str(prices.index[-1].date())
+    if last_date < str(expected):
+        print(f"  WARNING: latest {last_date} still behind expected {expected}; proceeding anyway.")
     print(f"  Latest data: {last_date}")
 
     for t in ['QQQ','SPY']:
