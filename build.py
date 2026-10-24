@@ -42,16 +42,25 @@ def download_prices():
         if isinstance(df.columns, pd.MultiIndex):
             df.columns = df.columns.get_level_values(0)
         pd_dict[t] = df['Close']
-    return pd.DataFrame(pd_dict).sort_index().ffill()
+    return pd.DataFrame(pd_dict).sort_index()
 
 
 def run():
     print(f"[{datetime.now():%Y-%m-%d %H:%M}] Downloading data...")
     prices = download_prices()
-    last_date = str(prices.index[-1].date())
+
+    primary = ['QQQ', 'SPY']  # headline signal tickers shown on the dashboard
+
+    def primary_last_date():
+        # Latest date for which BOTH primary tickers have a real close. Using
+        # the earlier of the two avoids ever labelling the dashboard with a date
+        # for which QQQ/SPY still only carry a forward-filled (stale) price.
+        return min(prices[t].dropna().index[-1].date() for t in primary)
+
+    last_date = str(primary_last_date())
 
     # Guard against publishing a stale day: retry briefly if the provider has not
-    # yet finalized the most recent close.
+    # yet finalized the most recent close for the primary tickers.
     expected = expected_latest_trade_date()
     attempts = 0
     while last_date < str(expected) and attempts < 3:
@@ -59,10 +68,14 @@ def run():
         print(f"  Latest {last_date} < expected {expected}; retrying in 5 min ({attempts}/3)...")
         time.sleep(300)
         prices = download_prices()
-        last_date = str(prices.index[-1].date())
+        last_date = str(primary_last_date())
     if last_date < str(expected):
         print(f"  WARNING: latest {last_date} still behind expected {expected}; proceeding anyway.")
     print(f"  Latest data: {last_date}")
+
+    # Truncate to the common primary-ticker date, then fill any intra-history
+    # gaps. This keeps the "data through" date and the QQQ/SPY prices in sync.
+    prices = prices[prices.index <= pd.Timestamp(last_date)].ffill()
 
     for t in ['QQQ','SPY']:
         prices[f'{t}_MA{MA_SHORT}']=prices[t].rolling(MA_SHORT).mean()
